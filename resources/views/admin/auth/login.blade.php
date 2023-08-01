@@ -2,11 +2,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
-            <div class="col-xl-5">
+            <div class="col-xl-4">
                 <div class="card shadow" >
                     <div class="card-body py-5">
                         <div class="text-center">
-                            <img src="{{ asset('/storage/images/logo.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="150px" width="150px">
+                            <img src="{{ asset('/storage/images/avatar.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
                             <h2 >{{ __('Job Portal - ZPPSU') }}</h2>
                         </div>
                         <form method="POST" action="{{ route('admin.login') }}">
