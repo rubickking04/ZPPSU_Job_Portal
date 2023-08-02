@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ asset('storage/images/logo.png') }}" type="image/x-icon">
+    {{-- <link rel="icon" href="{{ asset('storage/images/logo.png') }}" type="image/x-icon"> --}}
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,37 @@
 </head>
 
 <body class="antialiased" style="background-color: #eceff1">
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
     <div id="app">
+        <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item px-3">
+                        <a class="nav-link active " aria-current="page" href="#">{{ __('Login') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active btn btn-primary rounded-5 text-white px-3" aria-current="page" href="#">{{ __('Sign Up') }}</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
         <main>
             @yield('content')
         </main>

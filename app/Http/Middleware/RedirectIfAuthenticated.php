@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
         //         return route('store.home');
         //     }
         // } 
-        elseif (Auth::guard($guards)->check()) {
+        elseif (Auth::check()) {
             return redirect(RouteServiceProvider::HOME);
         }
 

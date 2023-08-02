@@ -18,7 +18,7 @@
 </head>
 
 <body class="antialiased" style="background-color: #eceff1">
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
     <div id="app">
         <main>
             @yield('content')

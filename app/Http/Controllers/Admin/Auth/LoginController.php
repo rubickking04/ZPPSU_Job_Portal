@@ -44,13 +44,11 @@ class LoginController extends Controller
         // Load user from database
         $user = \App\Models\Admin::where($this->username(), $request->{$this->username()})->first();
         if ($user && !Hash::check($request->password, $user->password)) {
-            $errors = ['password' => 'The password is incorrect.'];
+            $errors = ['password' => 'Administrator\'s password is incorrect.'];
         }
         if ($request->expectsJson()) {
             return response()->json($errors, 422);
         }
-        return redirect()->back()
-            ->withInput($request->only($this->username(), 'remember'))
-            ->withErrors($errors);
+        return redirect()->back()->withInput($request->only($this->username(), 'remember'))->withErrors($errors);
     }
 }

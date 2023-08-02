@@ -1,7 +1,7 @@
 @extends('user.layouts.index')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
             <div class="col-xl-4">
                 <div class="card shadow" >
                     <div class="card-body py-5">
@@ -55,8 +55,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <button type="submit" class="text-center text-white btn btn-primary mb-3">Sign in</button>
+                                <div class="text-start">
+                                    <button type="submit" class="text-center text-white btn w-100 btn-primary mb-3">Sign in</button>
+                                </div>
+                                <div class="text-start">
+                                    <p>{{ __('Don\'t have an account? ') }}
+                                        <a href="#" class="text-decoration-none">{{ __('Register here') }}</a>
+                                    </p>
                                 </div>
                             </div>
                         </form>

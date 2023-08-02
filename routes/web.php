@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
 use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -25,7 +26,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     | User Web Routes
     |--------------------------------------------------------------------------
     */
-
+    Route::controller(AuthUserLogin::class)->group( function() {
+        Route::get('/auth/login', 'index')->name('user.login')->middleware('guest:user');
+        Route::post('/auth/login', 'login')->name('user.auth.login');
+    });
 
 
     /*
