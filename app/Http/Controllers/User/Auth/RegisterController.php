@@ -41,6 +41,6 @@ class RegisterController extends Controller
         ]);
         Auth::login($user);
         Alert::toast('Welcome, ' . Auth::user()->name, 'success');
-        return redirect()->route('home');
+        return redirect()->route('user.home');
     }
 }

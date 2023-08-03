@@ -19,15 +19,15 @@ class Authenticate extends Middleware
                 // Alert::toast('Please Login an account first!', 'info');
                 return route('admin.login');
             }
-        } 
+        }
         // elseif ($request->is('my-store/*')) {
         //     if (!Auth::guard('store')->check()) {
         //         return route('store.login');
         //     }
-        // } 
+        // }
         else if (!Auth::guard('web')->check()) {
             // Alert::toast('Please Login an account first!', 'info');
-            return route('login');
+            return route('user.login');
         }
     }
 }
