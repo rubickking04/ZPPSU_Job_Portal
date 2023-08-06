@@ -32,34 +32,40 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">{{ __('My Jobs') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
-                    @guest
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ route('user.register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endguest
-                    @auth
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}</a>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                            <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endauth
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                    <div class="hstack gap-3">
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('user.register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endguest
+                        @auth
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa-solid fa-user fs-5"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endauth
+                        <div class="vr"></div>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('user.register') }}">{{ __('Employers/Post Jobs') }}</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
             </div>
