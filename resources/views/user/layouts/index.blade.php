@@ -65,6 +65,9 @@
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employers/Post Jobs') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Post Jobs') }}</a>
+                        </li>
                     </div>
                 </ul>
             </div>

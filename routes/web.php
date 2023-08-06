@@ -44,6 +44,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::middleware('auth')->group(function () {
         Route::controller(EmployerController::class)->group( function() {
             Route::get('/employer', 'index')->name('user.employer');
+            Route::post('/employer', 'store')->name('user.employer.create');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');

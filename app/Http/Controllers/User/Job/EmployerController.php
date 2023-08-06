@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User\Job;
 
-use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployerController extends Controller
 {
@@ -20,7 +23,22 @@ class EmployerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'company_name' => 'required|string|max:50',
+            'number_of_employees' => 'required|string|max:50',
+            'phone_number' => 'required|string',
+        ]);
+        $employee = Employee::create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->input('name'),
+            'company_name' => $request->input('company_name'),
+            'number_of_employees' => $request->input('number_of_employees'),
+            'phone_number' => $request->input('phone_number'),
+        ]);
+        Alert::toast('Employee Account created Successfully','success');
+        return redirect()->back();
+        // dd($employee);
     }
 
     /**

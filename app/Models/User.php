@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     *
+     * Define the relationship between User and Employee models.
+     *
+     */
+    public function employee_account(){
+        return $this->hasOne(Employee::class, 'user_id');
+    }
 }
