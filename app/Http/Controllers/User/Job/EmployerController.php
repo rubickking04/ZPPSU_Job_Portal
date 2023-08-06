@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User\Job;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class EmployerAccountController extends Controller
+class EmployerController extends Controller
 {
     /**
      * Display a listing of the resource.

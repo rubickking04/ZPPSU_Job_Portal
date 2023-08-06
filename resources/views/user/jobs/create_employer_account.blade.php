@@ -3,12 +3,12 @@
     <div class="container py-5">
         <div class="row justify-content-center py-5">
             <div class="col-xl-6">
-                <div class="card shadow" >
+                {{-- <div class="card shadow" > --}}
                     <div class="container">
                         <div class="card-body py-5">
                             <div class="text-center">
                                 <img src="{{ asset('/storage/images/avatar.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
-                                <h2 >{{ __('Job Portal - ZPPSU') }}</h2>
+                                <h2 class="text-start">{{ __('Create an Employer Account') }}</h2>
                             </div>
                             <form method="POST" action="{{ route('user.auth.login') }}">
                                 @csrf
@@ -51,7 +51,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
     </div>
