@@ -63,7 +63,7 @@
                         @endauth
                         <div class="vr"></div>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('user.register') }}">{{ __('Employers/Post Jobs') }}</a>
+                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employers/Post Jobs') }}</a>
                         </li>
                     </div>
                 </ul>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
+use App\Http\Controllers\User\Job\EmployerAccountController as EmployerAccountController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
@@ -41,7 +42,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('/home', 'index')->name('user.home');
         });
     Route::middleware('auth')->group(function () {
-
+        Route::controller(EmployerAccountController::class)->group( function() {
+            Route::get('/employer', 'index')->name('user.employer');
+        });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');
         });
