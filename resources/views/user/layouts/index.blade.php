@@ -62,15 +62,8 @@
                         </li>
                         @endauth
                         <div class="vr"></div>
-                        @auth
-                            @if ( App\Models\Employee::where('user_id', '=', Auth::user()->id)->exists())
-                            <li class="nav-item">
-                                <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employers/Post Jobs') }}</a>
-                            </li>
-                            @endif
-                        @endauth
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Post Jobs') }}</a>
+                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employer / Post Jobs') }}</a>
                         </li>
                     </div>
                 </ul>
