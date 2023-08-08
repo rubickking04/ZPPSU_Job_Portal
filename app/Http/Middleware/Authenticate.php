@@ -19,7 +19,11 @@ class Authenticate extends Middleware
                 return route('admin.login');
             }
         }
-        // }
+        elseif ($request->is('employer/*')) {
+            if (!Auth::guard('employer')->check()) {
+                return route('employer.login');
+            }
+        }
         else if (!Auth::guard('web')->check()) {
             return route('user.login');
         }

@@ -21,12 +21,12 @@ class RedirectIfAuthenticated
             if (Auth::guard('admin')->check()) {
                 return route('admin.home');
             }
-        } 
-        // elseif ($request->is('my-store/*')) {
-        //     if (Auth::guard('store')->check()) {
-        //         return route('store.home');
-        //     }
-        // } 
+        }
+        elseif ($request->is('employer/*')) {
+            if (Auth::guard('employer')->check()) {
+                return route('employer.home');
+            }
+        }
         elseif (Auth::check()) {
             return redirect(RouteServiceProvider::HOME);
         }

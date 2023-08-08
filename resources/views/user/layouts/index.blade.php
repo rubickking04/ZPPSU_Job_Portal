@@ -14,13 +14,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <style>
+        .list-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            padding: 0 10px;
+            display: inline-block;
+            position: relative;
+            color: #0087ca;
+        }
+        .list-link:hover{
+            color: white;
+            /* text-decoration: underline; */
+        }
+        .list-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            border-radius: 20px;
+            background-color: #0D47A1;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .list-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased" style="background-color: #eceff1">
     @include('sweetalert::alert')
     <div id="app">
-        <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+        <nav class="navbar navbar-expand-lg shadow-sm" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"><img class="align-top" src="{{ asset('/storage/images/logo.png') }}" height="40" width="40"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,24 +60,24 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
+                        <a class="nav-link list-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ __('My Jobs') }}</a>
+                        <a class="nav-link list-link active" href="#">{{ __('My Jobs') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link list-link active" href="#">Pricing</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                     <div class="hstack gap-3">
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link list-link active" href="{{ route('user.login') }}">{{ __('Login') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ route('user.register') }}">{{ __('Register') }}</a>
-                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('user.register') }}">{{ __('Register') }}</a>
+                        </li> --}}
                         @endguest
                         @auth
                         <li class="nav-item dropdown">
@@ -61,9 +92,9 @@
                             </div>
                         </li>
                         @endauth
-                        <div class="vr"></div>
+                        <div class="vr mt-2" style="height: 25px;"></div>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employer / Post Jobs') }}</a>
+                            <a class="nav-link list-link active" href="{{ route('user.employer') }}">{{ __('Employer / Post Jobs') }}</a>
                         </li>
                     </div>
                 </ul>
