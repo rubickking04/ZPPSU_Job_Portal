@@ -62,16 +62,16 @@
                         </li>
                         @endauth
                         <div class="vr"></div>
-                        @if ( App\Models\Employee::where('user_id', '=', Auth::user()->id)->doesntExists())
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employers/Post Jobs') }}</a>
-                        </li>
-                        @endif
-                        @if ( App\Models\Employee::where('user_id', '=', Auth::user()->id)->exists())
+                        @auth
+                            @if ( App\Models\Employee::where('user_id', '=', Auth::user()->id)->exists())
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Employers/Post Jobs') }}</a>
+                            </li>
+                            @endif
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('user.employer') }}">{{ __('Post Jobs') }}</a>
                         </li>
-                        @endif
                     </div>
                 </ul>
             </div>
