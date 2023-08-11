@@ -75,11 +75,17 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-truncate">
+                            <i class="fs-4 fa-solid fa-briefcase text-danger"></i>
+                            <span class="ms-2 text-black" aria-current="page">{{ __('Jobs') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-comment-dots text-danger"></i>
                             <span class="ms-2 text-black" aria-current="page">{{ __('Request') }}</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#"class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#table-collapse" aria-expanded="true">
                         <i class="fs-4 fa-solid fa-table text-danger"></i>
                         <span class="ms-2  text-black">{{ __('Data Tables') }}</span>
@@ -89,13 +95,13 @@
                                 <li class="nav-item"><a href="#" class="ms-2 nav-link  text-decoration-none rounded"><i class="fs-5 fa-solid fa-angles-right"></i><span class="ms-2  text-black">{{ __('Farmers Table ') }}<span class="badge text-bg-primary">{{ __('('.App\Models\User::all()->count().')') }}</span> </span></a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
                 <hr>
                 <div class="dropdown">
                     <a href="{{ route('admin.logout') }}" class="d-flex px-3 align-items-center nav-link text-truncate"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt fs-5 text-black"></i><span
+                        <i class="fas fa-sign-out-alt fs-5 text-danger"></i><span
                             class="ms-2 text-black">{{ __('Sign out') }}</span> </a>
                 </div>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
