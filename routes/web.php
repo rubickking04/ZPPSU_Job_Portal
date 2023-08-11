@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
-use App\Http\Controllers\User\Job\EmployerController as EmployerController;
+use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
+use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
 use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
@@ -42,15 +43,24 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('/home', 'index')->name('user.home');
         });
     Route::middleware('auth')->group(function () {
-        Route::controller(EmployerController::class)->group( function() {
-            Route::get('/employer', 'index')->name('user.employer');
-            Route::post('/employer', 'store')->name('user.employer.create');
-        });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');
         });
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employer Web Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::controller(AuthEmployerLogin::class)->group( function() {
+        Route::get('/employer/login', 'index')->name('employer.login')->middleware('guest:employer');
+        Route::post('/employer/login', 'login')->name('employer.auth.login');
+    });
+    Route::controller(AuthEmployerRegister::class)->group( function() {
+        Route::get('/employer/register', 'index')->name('employer.register')->middleware('guest:employer');
+        Route::post('/employer/register', 'register')->name('employer.register.login');
+    });
 
     /*
     |--------------------------------------------------------------------------

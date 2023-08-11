@@ -94,7 +94,7 @@
                         @endauth
                         <div class="vr mt-2" style="height: 25px;"></div>
                         <li class="nav-item">
-                            <a class="nav-link list-link active" href="{{ route('user.employer') }}">{{ __('Employer / Post Jobs') }}</a>
+                            <a class="nav-link list-link active" href="{{ route('employer.login') }}">{{ __('Employer / Post Jobs') }}</a>
                         </li>
                     </div>
                 </ul>

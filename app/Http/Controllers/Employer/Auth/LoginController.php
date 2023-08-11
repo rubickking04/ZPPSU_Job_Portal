@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\User\Auth;
+namespace App\Http\Controllers\Employer\Auth;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +39,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('user.auth.login');
+        return view('employer.auth.login');
     }
 
     /**
