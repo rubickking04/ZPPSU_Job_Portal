@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="text-start">
-                                        <button type="submit" class="text-center text-white btn w-100 btn-primary mb-3 rounded-5">Sign in</button>
+                                        <button type="submit" class="text-center text-white btn w-100 btn-danger mb-3 rounded-5">Sign in</button>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-3">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="text-start">
-                                        <a href="{{ route('user.register') }}" class="text-decoration-none w-50 d-block mx-auto btn btn-outline-primary rounded-5">{{ __('Sign Up here') }}</a>
+                                        <a href="{{ route('user.register') }}" class="text-decoration-none w-50 d-block mx-auto btn btn-outline-danger rounded-5">{{ __('Sign Up here') }}</a>
                                     </div>
                                 </div>
                             </form>

@@ -7,14 +7,14 @@
                     <div class="container">
                         <div class="card-body py-5">
                             <div class="text-center">
-                                <img src="{{ asset('/storage/images/avatar.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
-                                <h2 >{{ __('Job Portal - ZPPSU') }}</h2>
+                                <img src="{{ asset('/storage/images/logo.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
+                                <h2 >{{ __('Employer Portal - ZPPSU') }}</h2>
                             </div>
                             <form method="POST" action="{{ route('user.auth.login') }}">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="form-outline text-start">
-                                        <label for="email" class="col-form-label">Email</label>
+                                        <label for="email" class="col-form-label">Company Email</label>
                                         <div class="input-group">
                                             <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                             <input type="email" id="email" placeholder="Example: rubickking04@gmail.com"
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="text-start">
-                                        <button type="submit" class="text-center text-white btn w-100 btn-primary mb-3 rounded-5">Sign in</button>
+                                        <button type="submit" class="text-center text-white btn w-100 btn-danger mb-3 rounded-5">Sign in</button>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-3">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="text-start">
-                                        <a href="{{ route('employer.register') }}" class="text-decoration-none w-50 d-block mx-auto btn btn-outline-primary rounded-5">{{ __('Sign Up here') }}</a>
+                                        <a href="{{ route('employer.register') }}" class="text-decoration-none w-50 d-block mx-auto btn btn-outline-danger rounded-5">{{ __('Sign Up here') }}</a>
                                     </div>
                                 </div>
                             </form>

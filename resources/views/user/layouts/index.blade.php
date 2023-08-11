@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{-- <link rel="icon" href="{{ asset('storage/images/logo.png') }}" type="image/x-icon"> --}}
+    <link rel="icon" href="{{ asset('storage/images/logo.png') }}" type="image/x-icon">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,11 +32,11 @@
             position: absolute;
             width: 100%;
             transform: scaleX(0);
-            height: 2px;
+            height: 4px;
             bottom: 0;
             left: 0;
             border-radius: 20px;
-            background-color: #0D47A1;
+            background-color: #B71C1C;
             transform-origin: bottom right;
             transition: transform 0.25s ease-out;
         }
