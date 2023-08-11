@@ -55,7 +55,7 @@ class LoginController extends Controller
             'password' =>  'required'
         ]);
         if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
-            return redirect()->route('user.home');
+            return redirect()->route('employer.home');
         }
         return $this->sendMyFailedLoginResponse($request);
     }

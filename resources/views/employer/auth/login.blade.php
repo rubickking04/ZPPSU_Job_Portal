@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="text-start">
-                                        <a href="{{ route('employer.register') }}" class="text-decoration-none w-50 d-block mx-auto btn btn-outline-danger rounded-5">{{ __('Sign Up here') }}</a>
+                                        <a href="{{ route('employer.register') }}" class="text-decoration-none w-75 d-block mx-auto btn btn-outline-danger rounded-5">{{ __('Create company account here') }}</a>
                                     </div>
                                 </div>
                             </form>

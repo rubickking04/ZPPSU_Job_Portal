@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:50',
             'company_name' => 'required|string|max:50',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|unique:employers|email',
             'password' => 'required|confirmed|min:8',
         ]);
         $user = Employer::create([
@@ -42,7 +42,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         Auth::guard('employer')->login($user);
-        Alert::toast('Welcome, ' . Auth::user()->name, 'success');
-        return redirect()->route('user.home');
+        Alert::toast('Welcome, ' . Auth::guard('employer')->user()->name, 'success');
+        return redirect()->route('employer.home');
     }
 }

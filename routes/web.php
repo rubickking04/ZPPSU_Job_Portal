@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
+use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
+use App\Http\Controllers\User\HomeController as UserHomeController;
+
 use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
 use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
-use App\Http\Controllers\User\HomeController as UserHomeController;
-use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
+use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
+
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
 use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -59,7 +62,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     });
     Route::controller(AuthEmployerRegister::class)->group( function() {
         Route::get('/employer/register', 'index')->name('employer.register')->middleware('guest:employer');
-        Route::post('/employer/register', 'register')->name('employer.register.login');
+        Route::post('/employer/register', 'register')->name('employer.auth.register');
+    });
+    Route::middleware('auth:employer')->group(function () {
+        Route::controller(EmployerHomeController::class)->group( function() {
+            Route::get('/employer/home', 'index')->name('employer.home');
+        });
+        Route::controller(AuthEmployerLogout::class)->group(function() {
+            Route::post('/auth/logout', 'logout')->name('employer.logout');
+        });
     });
 
     /*
