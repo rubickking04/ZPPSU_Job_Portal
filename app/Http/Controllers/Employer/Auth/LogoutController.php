@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Employer\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class LogoutController extends Controller
     public function logout()
     {
         Session::flush();
-        Auth::guard('admin')->logout();
-        return redirect()->route('admin.login');
+        Auth::guard('employer')->logout();
+        return redirect()->route('employer.login');
     }
 }

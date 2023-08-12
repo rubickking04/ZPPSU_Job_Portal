@@ -68,19 +68,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-truncate">
+                        <a href="{{ route('employer.posts.jobs') }}" class="nav-link text-truncate">
                             <i class="fs-4 bi bi-file-earmark-post text-danger"></i>
                             <span class="ms-2 text-black" aria-current="page">{{ __('Post Jobs') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-truncate">
+                        <a href="{{ route('employer.jobs') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-briefcase text-danger"></i>
                             <span class="ms-2 text-black" aria-current="page">{{ __('Jobs') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-truncate">
+                        <a href="{{ route('employer.requests') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-comment-dots text-danger"></i>
                             <span class="ms-2 text-black" aria-current="page">{{ __('Request') }}</span>
                         </a>
@@ -99,12 +99,12 @@
                 </ul>
                 <hr>
                 <div class="dropdown">
-                    <a href="{{ route('admin.logout') }}" class="d-flex px-3 align-items-center nav-link text-truncate"
+                    <a href="{{ route('employer.logout') }}" class="d-flex px-3 align-items-center nav-link text-truncate"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt fs-5 text-danger"></i><span
                             class="ms-2 text-black">{{ __('Sign out') }}</span> </a>
                 </div>
-                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('employer.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>

@@ -1,18 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
-use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
-use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
+
+use App\Http\Controllers\Employer\JobController;
+use App\Http\Controllers\Employer\PostJobController;
+use App\Http\Controllers\Employer\RequestController;
+
 use App\Http\Controllers\User\HomeController as UserHomeController;
-
-use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
-use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
-use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
-
-use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
-use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
+use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
+
+use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
+use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
+use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
+use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
+use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
+use App\Http\Controllers\Employer\Auth\LogoutController as AuthEmployerLogout;
+use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +73,17 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(EmployerHomeController::class)->group( function() {
             Route::get('/employer/home', 'index')->name('employer.home');
         });
+        Route::controller(JobController::class)->group( function() {
+            Route::get('/employer/jobs', 'index')->name('employer.jobs');
+        });
+        Route::controller(PostJobController::class)->group( function() {
+            Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');
+        });
+        Route::controller(RequestController::class)->group( function() {
+            Route::get('/employer/requests', 'index')->name('employer.requests');
+        });
         Route::controller(AuthEmployerLogout::class)->group(function() {
-            Route::post('/auth/logout', 'logout')->name('employer.logout');
+            Route::post('/employer/logout', 'logout')->name('employer.logout');
         });
     });
 

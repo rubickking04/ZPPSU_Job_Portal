@@ -19,13 +19,9 @@ return new class extends Migration
             $table->string('job_location');
             $table->string('job_type');
             $table->string('job_status');
+            $table->string('job_salary');
             $table->date('job_start_date');
             $table->date('job_end_date');
-            $table->string('job_salary');
-            $table->string('job_experience');
-            $table->string('job_education');
-            $table->string('job_skills');
-            $table->string('job_requirements');
             $table->timestamps();
         });
     }
