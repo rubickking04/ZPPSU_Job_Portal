@@ -78,6 +78,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');
+            Route::post('/employer/post/jobs', 'store')->name('post.job');
         });
         Route::controller(RequestController::class)->group( function() {
             Route::get('/employer/requests', 'index')->name('employer.requests');

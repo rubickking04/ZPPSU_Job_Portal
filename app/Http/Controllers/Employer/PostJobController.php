@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Employer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PostJobController extends Controller
 {
@@ -20,7 +23,30 @@ class PostJobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'job_title' => 'required|string|max:50',
+            'job_location' => 'required|string|max:50',
+            'job_type' => 'required|string|max:50',
+            'job_salary' => 'required|string|max:50',
+            'job_status' => 'required|string|max:50',
+            'job_description' => 'required|string|max:1000',
+            'job_start_date' => 'required|string|max:50',
+            'job_end_date' => 'required|string|max:50',
+        ]);
+        $post_job = Job::create([
+            'user_id' => Auth::guard('employer')->user()->id,
+            'job_title' => $request->job_title,
+            'job_location' => $request->job_location,
+            'job_type' => $request->job_type,
+            'job_salary' => $request->job_salary,
+            'job_status' => $request->job_status,
+            'job_description' => $request->job_description,
+            'job_start_date' => $request->job_start_date,
+            'job_end_date' => $request->job_end_date,
+        ]);
+        // dd($post_job);
+        Alert::toast('Job created successfully' ,'success');
+        return redirect()->route('employer.jobs');
     }
 
     /**

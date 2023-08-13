@@ -10,7 +10,7 @@
                                 <img src="{{ asset('/storage/images/logo.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
                                 <h2 >{{ __('Employer Portal - ZPPSU') }}</h2>
                             </div>
-                            <form method="POST" action="{{ route('user.auth.login') }}">
+                            <form method="POST" action="{{ route('employer.auth.login') }}">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="form-outline text-start">

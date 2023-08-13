@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -12,6 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $post_jobs = Job::latest()->get();
+        return view('user.home', compact('post_jobs'));
     }
 }

@@ -22,7 +22,7 @@ class LoginController extends Controller
     {
         $errors = [$this->username() => trans('auth.failed')];
         // Load user from database
-        $user = \App\Models\User::where($this->username(), $request->{$this->username()})->first();
+        $user = \App\Models\Employer::where($this->username(), $request->{$this->username()})->first();
         if ($user && !Hash::check($request->password, $user->password)) {
             $errors = ['password' => 'The password is incorrect.'];
         }
@@ -54,7 +54,7 @@ class LoginController extends Controller
             'email' => 'email|required',
             'password' =>  'required'
         ]);
-        if (Auth::attempt($request->only('email', 'password'), $request->remember)) {
+        if (Auth::guard('employer')->attempt($request->only('email', 'password'), $request->remember)) {
             return redirect()->route('employer.home');
         }
         return $this->sendMyFailedLoginResponse($request);

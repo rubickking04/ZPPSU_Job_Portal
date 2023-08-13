@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link list-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
+                        <a class="nav-link list-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Job Feed') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link list-link active" href="#">{{ __('My Jobs') }}</a>
