@@ -49,6 +49,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     });
     Route::controller(UserHomeController::class)->group( function() {
             Route::get('/home', 'index')->name('user.home');
+            Route::get('/search', 'search')->name('search.job');
         });
     Route::middleware('auth')->group(function () {
         Route::controller(AuthUserLogout::class)->group(function() {

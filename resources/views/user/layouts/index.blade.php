@@ -85,10 +85,16 @@
                                 <i class="fa-solid fa-user fs-5"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                <div class="container">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user fs-6 "></i><span class="ms-2 ">{{ __('My Profile') }}</span></a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt fs-6 "></i><span class="ms-2 ">{{ __('Sign out') }}</span>
+                                </a>
                                 <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+                                </div>
                             </div>
                         </li>
                         @endauth
