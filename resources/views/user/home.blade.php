@@ -53,7 +53,7 @@
                                 <i class="bi bi-three-dots-vertical fs-5"></i>
                             </div> --}}
                         </div>
-                        <p class="text-muted lh-1">{{ $post_job->job_title }}</p>
+                        <p class="text-muted lh-1">{{ $post_job->employer->company_name }}</p>
                         <div class="text-muted lh-1 mb-2">
                             <i class="fa-solid fa-location-dot fs-5 me-2 text-danger"></i>
                             <span class="">{{ $post_job->job_location }}</span>

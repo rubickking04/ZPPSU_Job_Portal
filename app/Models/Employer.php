@@ -42,4 +42,13 @@ class Employer extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     *
+     * Define the relationship between Employee and Post Job model.
+     *
+     */
+    public function post_job(){
+        return $this->hasOne(Job::class, 'user_id');
+    }
 }

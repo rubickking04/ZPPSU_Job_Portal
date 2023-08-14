@@ -18,6 +18,7 @@ use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
 use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
 use App\Http\Controllers\Employer\Auth\LogoutController as AuthEmployerLogout;
 use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
+use App\Http\Controllers\User\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::get('/search', 'search')->name('search.job');
         });
     Route::middleware('auth')->group(function () {
+        Route::controller(ProfileController::class)->group(function() {
+            Route::get('/profile', 'index')->name('user.profile');
+        });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');
         });

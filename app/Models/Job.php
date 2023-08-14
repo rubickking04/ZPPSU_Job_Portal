@@ -25,4 +25,13 @@ class Job extends Model
         'job_start_date',
         'job_end_date',
     ];
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function employer(){
+        return $this->belongsTo(Employer::class, 'user_id');
+    }
 }

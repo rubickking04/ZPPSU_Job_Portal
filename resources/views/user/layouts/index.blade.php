@@ -86,7 +86,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarDropdown">
                                 <div class="container">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-user fs-6 "></i><span class="ms-2 ">{{ __('My Profile') }}</span></a>
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}"><i class="fas fa-user fs-6 "></i><span class="ms-2 ">{{ __('My Profile') }}</span></a>
                                 <hr class="dropdown-divider">
                                 <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fs-6 "></i><span class="ms-2 ">{{ __('Sign out') }}</span>
