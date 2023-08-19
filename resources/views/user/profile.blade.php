@@ -60,7 +60,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        <button class="btn btn-lg btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">{{ __('Upload Resume') }}</button>
+                        <button class="btn btn-lg btn-danger w-100" type="submit">{{ __('Upload Resume') }}</button>
                     </form>
                     </div>
                     <div class="col-lg-5">

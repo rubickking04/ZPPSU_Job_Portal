@@ -22,10 +22,9 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'file-resume' => 'required|file',
-        ]);
-        //
+        // $request->validate([
+        //     'file-resume' => 'required|file',
+        // ]);
         $files = File::create([
             'user_id' => Auth::user()->id,
         ]);
