@@ -43,24 +43,30 @@
                 <h4>{{ __('Resume') }}</h4>
                 <div class="row">
                     <div class="col-lg-6">
-                        <form action="#type your action here" method="POST" enctype="multipart/form-data">
-                            <div id="yourBtn" class="btn btn-lg btn-outline-primary w-100" onclick="getFile()">{{ __('Upload Resume') }}</div>
-                            <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="sub(this)"/></div>
-                            <input type="submit" value='submit'  class="d-none">
-                        </form>
+                        <button class="btn btn-lg btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">{{ __('Upload Resume') }}</button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                                <input type="file" class="form-control" id="recipient-name">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <script>
-                        function getFile(){
-                            document.getElementById("upfile").click();
-                        }
-                        function sub(obj) {
-                            var file = obj.value;
-                            var fileName = file.split("\\");
-                            document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
-                            document.myForm.submit();
-                            event.preventDefault();
-                        }
-                    </script>
                     <div class="col-lg-6">
                         <button class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</button>
                     </div>
