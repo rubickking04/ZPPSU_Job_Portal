@@ -40,7 +40,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         Auth::login($user);
-        Alert::toast('Welcome, ' . Auth::user()->name, 'success');
+        // Alert::toast('Welcome, ' . Auth::user()->name, 'success');
         return redirect()->route('user.home');
     }
 }

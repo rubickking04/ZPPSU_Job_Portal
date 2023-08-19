@@ -41,34 +41,39 @@
                     </div>
                 </div>
                 <h4>{{ __('Resume') }}</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <button class="btn btn-lg btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">{{ __('Upload Resume') }}</button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                                <input type="file" class="form-control" id="recipient-name">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <i class="fa-solid fa-check me-2"></i>
+                            <strong>{{ $message }}</strong>
                         </div>
+                        @endif
+                        <form class="mb-4" action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <div class="mb-3">
+                                <input type="file" class="form-control filepond" id="recipient-name" name="file-resume">
+                            </div>
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        <button class="btn btn-lg btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">{{ __('Upload Resume') }}</button>
+                    </form>
                     </div>
-                    <div class="col-lg-6">
-                        <button class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</button>
+                    <div class="col-lg-5">
+                        <hr>
+                    </div>
+                    <div class="col-lg-1">
+                        <p>{{ __('or ') }}</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <hr>
+                    </div>
+                    <div class="col-lg-12">
+                        <button class="btn btn-lg btn-outline-danger w-100">{{ __('Build a Resume') }}</button>
                     </div>
                 </div>
                 <p class="text-muted small mt-2">{{ __('By continuing, you agree to receive job opportunities from ZPPSU Job Portal.') }}</p>
