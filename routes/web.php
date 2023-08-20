@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\FileController;
+use App\Http\Controllers\User\ResumeController;
 use App\Http\Controllers\Employer\JobController;
-use App\Http\Controllers\User\ProfileController;
 
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
-use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 
+use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
 use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
@@ -60,6 +61,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(FileController::class)->group(function() {
             Route::post('/fileupload', 'store')->name('file-upload');
             Route::post('/tmp-upload', 'tmpUpload')->name('tmpUpload');
+        });
+        Route::controller(ResumeController::class)->group(function() {
+            Route::get('/resume/builder', 'index')->name('resume.builder');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');

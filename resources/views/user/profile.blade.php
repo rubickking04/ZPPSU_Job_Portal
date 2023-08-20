@@ -74,7 +74,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-12">
-                        <button class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</button>
+                        <a href="{{ route('resume.builder') }}" class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</a>
                     </div>
                 </div>
                 <p class="text-muted small mt-2">{{ __('By continuing, you agree to receive job opportunities from ZPPSU Job Portal.') }}</p>
