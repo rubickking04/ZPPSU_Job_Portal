@@ -49,19 +49,20 @@
                             <strong>{{ $message }}</strong>
                         </div>
                         @endif
-                        <form class="mb-4" action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data">
+                        @error('file_resume')
+                        <div class="alert alert-danger">
+                            <i class="fa-solid fa-circle-exclamation me-2"></i>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @enderror
+                        <form method="POST" action="{{ route('file-upload') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <div class="mb-3">
-                                <input type="file" class="form-control filepond" id="recipient-name" name="file-resume">
+                                <input type="file" class="form-control filepond" id="file_resume" name="file_resume"/>
                             </div>
-                            @error('file')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        <button class="btn btn-lg btn-danger w-100" type="submit">{{ __('Upload Resume') }}</button>
-                    </form>
+                            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">{{ __('Upload Resume') }}</button>
+                        </form>
                     </div>
                     <div class="col-lg-5">
                         <hr>
@@ -73,7 +74,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-12">
-                        <button class="btn btn-lg btn-outline-danger w-100">{{ __('Build a Resume') }}</button>
+                        <button class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</button>
                     </div>
                 </div>
                 <p class="text-muted small mt-2">{{ __('By continuing, you agree to receive job opportunities from ZPPSU Job Portal.') }}</p>

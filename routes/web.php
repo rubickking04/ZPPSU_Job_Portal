@@ -59,6 +59,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(FileController::class)->group(function() {
             Route::post('/fileupload', 'store')->name('file-upload');
+            Route::post('/tmp-upload', 'tmpUpload')->name('tmpUpload');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');

@@ -48,7 +48,7 @@ class User extends Authenticatable
      * Define the relationship between User and Employee models.
      *
      */
-    public function employee_account(){
-        return $this->hasOne(Employee::class, 'user_id');
+    public function file_resume(){
+        return $this->hasOne(File::class, 'user_id');
     }
 }

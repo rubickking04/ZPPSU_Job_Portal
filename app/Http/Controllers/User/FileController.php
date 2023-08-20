@@ -22,16 +22,14 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'file-resume' => 'required|file',
-        // ]);
-        $files = File::create([
-            'user_id' => Auth::user()->id,
+        $request->validate([
+            'file_resume' =>'required'
         ]);
-        if (request()->hasFile('file-resume')) {
-            $filename = request()->file->getClientOriginalName();
-            request()->file->storeAs('files', $filename, 'public');
-            $files->store(['file-resume' => $filename]);
+        if (request()->hasFile('file_resume')) {
+            $file = $request->file('file_resume');
+            $filename = $file->getClientOriginalName();
+            request()->file('file_resume')->storeAs('files/tmp/', $filename, 'public');
+            return back()->with('success', 'File uploaded successfully.');
         }
         return back()->with('success', 'File uploaded successfully.');
     }
@@ -39,9 +37,19 @@ class FileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function tmpUpload(Request $request)
     {
-        //
+        if (request()->hasFile('file_resume')) {
+            $file = $request->file('file_resume');
+            $filename = $file->getClientOriginalName();
+            request()->file('file_resume')->storeAs('files/tmp/', $filename, 'public');
+            File::create([
+                'user_id' => Auth::user()->id,
+                'file_resume' => $filename
+            ]);
+            return $filename;
+        }
+        return '';
     }
 
     /**

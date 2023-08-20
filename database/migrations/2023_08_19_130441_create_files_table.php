@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('file-resume')->default('product.jpg');
+            $table->string('file_resume')->nullable();
             $table->timestamps();
         });
     }

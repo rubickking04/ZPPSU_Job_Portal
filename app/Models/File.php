@@ -8,8 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_id',
-        'file-resume'
+        'file_resume'
     ];
+
+    /**
+     *
+     * Define the relationship between User and File Resume models.
+     *
+     */
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
