@@ -136,6 +136,21 @@
     </script>
 </body>
 <script>
+    // const checkbox = document.getElementById('current');
+    // const dateInput = document.getElementById('date');
+
+    // checkbox.addEventListener('change', function () {
+    //     if (checkbox.checked) {
+    //         dateInput.value = 'Present';
+    //         dateInput.placeholder = 'Present';
+    //         dateInput.type = 'text';
+    //         dateInput.disabled = true;
+    //     } else {
+    //         dateInput.value = '';
+    //         dateInput.type = 'month';
+    //         dateInput.disabled = false;
+    //     }
+    // });
     function password_show_hide() {
         var x = document.getElementById("password");
         var show_eye = document.getElementById("show_eye");

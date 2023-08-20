@@ -3,14 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\FileController;
-use App\Http\Controllers\User\ResumeController;
 use App\Http\Controllers\Employer\JobController;
-
 use App\Http\Controllers\User\ProfileController;
+
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
-use App\Http\Controllers\User\HomeController as UserHomeController;
+use App\Http\Controllers\User\Resume\ResumeController;
+use App\Http\Controllers\User\Resume\EducationController;
 
+use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
@@ -64,6 +65,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(ResumeController::class)->group(function() {
             Route::get('/resume/builder', 'index')->name('resume.builder');
+        });
+        Route::controller(EducationController::class)->group(function() {
+            Route::get('/resume/builder/education', 'index')->name('review.education');
+            Route::post('/resume/builder/education', 'store')->name('add.education');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');
