@@ -19,7 +19,9 @@ class Education extends Model
         'level_of_education',
         'field_of_study',
         'school_name',
-        'start_date',
-        'end_date',
+        'start_month',
+        'start_year',
+        'end_month',
+        'end_year',
     ];
 }

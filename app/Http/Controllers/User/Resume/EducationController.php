@@ -28,16 +28,20 @@ class EducationController extends Controller
             'level_of_education' => 'required|string|max:50',
             'field_of_study' => 'required||string|max:50',
             'school_name' => 'required||string|max:50',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'start_month' => 'required',
+            'start_year' => 'required',
+            'end_month' => 'required',
+            'end_year' => 'required',
         ]);
         $education = Education::create([
             'user_id' => Auth::user()->id,
             'level_of_education' => $request->input('level_of_education'),
             'field_of_study' => $request->input('field_of_study'),
             'school_name' => $request->input('school_name'),
-            'start_date' => $request->input('start_date'),
-            'end_date' => $request->input('end_date'),
+            'start_month' => $request->input('start_month'),
+            'start_year' => $request->input('start_year'),
+            'end_month' => $request->input('end_month'),
+            'end_year' => $request->input('end_year'),
         ]);
         return redirect()->route('review.education');
     }
