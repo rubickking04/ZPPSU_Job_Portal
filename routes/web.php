@@ -8,9 +8,10 @@ use App\Http\Controllers\User\ProfileController;
 
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
+use App\Http\Controllers\User\Resume\WorkController;
 use App\Http\Controllers\User\Resume\ResumeController;
-use App\Http\Controllers\User\Resume\EducationController;
 
+use App\Http\Controllers\User\Resume\EducationController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -69,6 +70,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(EducationController::class)->group(function() {
             Route::get('/resume/builder/education', 'index')->name('review.education');
             Route::post('/resume/builder/education', 'store')->name('add.education');
+            Route::get('/resume/builder/education/edit/{id}', 'show')->name('edit.education');
+            Route::post('/resume/builder/education/{id}', 'update')->name('update.education');
+            Route::get('/resume/builder/education/delete/{id}', 'destroy')->name('delete.education');
+        });
+        Route::controller(WorkController::class)->group(function() {
+            Route::get('/resume/builder/work', 'index')->name('resume.work');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');

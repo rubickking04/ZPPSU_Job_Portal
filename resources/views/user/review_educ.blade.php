@@ -4,6 +4,12 @@
         <div class="row justify-content-center">
             <div class="col-xl-6">
                 <h3>{{ __('Review your Education.') }}</h3>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <i class="fa-solid fa-check me-2"></i>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
                 @foreach ( $educations as $educations )
                 <div class="card mb-3">
                     <div class="card-body">
@@ -16,8 +22,8 @@
                                     <i class="bi bi-three-dots-vertical fs-5"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-rotate-left me-2"></i>{{ __('Edit') }}</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('edit.education',$educations->id) }}"><i class="fa-solid fa-rotate-left me-2"></i>{{ __('Edit') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('delete.education',$educations->id) }}"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
                                 </ul>
                             </div>
                         </div>

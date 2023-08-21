@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('job_title')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('location')->nullable();
+            $table->string('start_month')->nullable();
+            $table->string('start_year')->nullable();
+            $table->string('end_month')->nullable();
+            $table->string('end_year')->nullable();
             $table->timestamps();
         });
     }
