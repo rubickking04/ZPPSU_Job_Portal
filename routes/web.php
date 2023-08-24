@@ -9,6 +9,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
 use App\Http\Controllers\User\Resume\WorkController;
+use App\Http\Controllers\User\Review\WorkController as ReviewWorkController;
 use App\Http\Controllers\User\Resume\ResumeController;
 
 use App\Http\Controllers\User\Resume\EducationController;
@@ -76,6 +77,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(WorkController::class)->group(function() {
             Route::get('/resume/builder/work', 'index')->name('resume.work');
+            Route::post('/resume/builder/work', 'store')->name('add.work');
+        });
+        Route::controller(ReviewWorkController::class)->group(function() {
+            Route::get('/resume/review/work', 'index')->name('review.work');
+            // Route::post('/resume/builder/work', 'store')->name('add.work');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');

@@ -5,32 +5,38 @@
             <div class="col-xl-6">
                 {{-- <h4>{{ __('Build your own resume here.') }}</h4> --}}
                 <h3>{{ __('Add your Work.') }}</h3>
-                <form action="{{ route('add.education') }}" method="POST">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <i class="fa-solid fa-check me-2"></i>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+                <form action="{{ route('add.work') }}" method="POST">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <div class="row mb-3 mt-4">
                         <div class="form-outline mb-2 text-start">
-                            <label for="level_of_education" class="col-form-label">{{ __('Level of Education') }}</label>
-                            <input type="text" id="level_of_education" placeholder="Bachelor Degree" name="level_of_education" class="form-control form-control-lg @error('level_of_education') is-invalid @enderror"  value="{{ old('level_of_education') }}"/>
-                            @error('level_of_education')
+                            <label for="job_title" class="col-form-label">{{ __('Job Title') }}</label>
+                            <input type="text" id="job_title" placeholder="Fullstack Developer" name="job_title" class="form-control form-control-lg @error('job_title') is-invalid @enderror"  value="{{ old('job_title') }}"/>
+                            @error('job_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-outline mb-2 text-start">
-                            <label for="field_of_study" class="col-form-label">{{ __('Field of study') }}</label>
-                            <input type="text" id="field_of_study" placeholder="" name="field_of_study" class="form-control form-control-lg @error('field_of_study') is-invalid @enderror"  value="{{ old('field_of_study') }}"/>
-                            @error('field_of_study')
+                            <label for="company_name" class="col-form-label">{{ __('Company Name') }}</label>
+                            <input type="text" id="company_name" placeholder="" name="company_name" class="form-control form-control-lg @error('company_name') is-invalid @enderror"  value="{{ old('company_name') }}"/>
+                            @error('company_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-outline mb-2 text-start">
-                            <label for="school_name" class="col-form-label">{{ __('School Name') }}</label>
-                            <input type="text" id="school_name" placeholder="Zamboanga Peninsula Polytechnic State University" name="school_name" class="form-control form-control-lg @error('school_name') is-invalid @enderror"  value="{{ old('school_name') }}"/>
-                            @error('school_name')
+                            <label for="location" class="col-form-label">{{ __('Location') }}</label>
+                            <input type="text" id="location" placeholder="Zamboanga City" name="location" class="form-control form-control-lg @error('location') is-invalid @enderror"  value="{{ old('location') }}"/>
+                            @error('location')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
