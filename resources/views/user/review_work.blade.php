@@ -36,7 +36,7 @@
                     <a href="{{ route('resume.work') }}" class="btn btn-outline-primary btn-lg"><i class="fa-solid fa-plus fs-5 me-2"></i>{{ __('Add Another') }}</a>
                 </div>
                 <div class="mt-3">
-                    <a href="#"  class="btn btn-primary ">{{ __('Save and Continue') }}</a>
+                    <a href="{{ route('review.work') }}"  class="btn btn-primary ">{{ __('Save and Continue') }}</a>
                 </div>
             </div>
         </div>

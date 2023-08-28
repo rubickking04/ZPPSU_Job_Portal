@@ -57,7 +57,25 @@ class WorkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'job_title' => 'required|string|max:50',
+            'company_name' => 'required||string|max:50',
+            'location' => 'required||string|max:50',
+            'start_month' => 'required',
+            'start_year' => 'required',
+            'end_month' => 'required',
+            'end_year' => 'required',
+        ]);
+        $work = Work::find($id);
+        $work->job_title = $request->input('job_title');
+        $work->company_name = $request->input('company_name');
+        $work->location = $request->input('location');
+        $work->start_month = $request->input('start_month');
+        $work->start_year = $request->input('start_year');
+        $work->end_month = $request->input('end_month');
+        $work->end_year = $request->input('end_year');
+        $work->save();
+        return redirect()->route('review.work')->with('success', 'Updated successfully.');
     }
 
     /**
