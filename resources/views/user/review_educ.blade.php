@@ -38,6 +38,9 @@
                 <div class="mt-3">
                     <a href="{{ route('resume.work') }}"  class="btn btn-primary ">{{ __('Save and Continue') }}</a>
                 </div>
+                <div class="mt-3">
+                    <a href="{{ route('review.resume') }}"  class="btn btn-primary ">{{ __('View Resume') }}</a>
+                </div>
             </div>
         </div>
     </div>
