@@ -5,6 +5,12 @@
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body container">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <i class="fa-solid fa-check me-2"></i>
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="text-start mt-4">
@@ -55,7 +61,7 @@
                             <div class="col-lg-8">
                                 <h4 class="mt-4 text-muted fw-bold">{{ __('Skills') }}</h4>
                             </div>
-                            <div class="col-lg-4 text-end">
+                            <div class="col-lg-4  text-end">
                                 <button type="button" class="mt-3 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus fs-5 me-2"></i>{{ __('Add skills') }}</button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -66,11 +72,18 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                <form method="POST" action="{{ route('add.skills') }}">
+                                                    @csrf
+                                                    <div class="mb-3 text-start ">
+                                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                        <label for="recipient-name" class="col-form-label">{{ __('Add yours') }}</label>
+                                                        <input type="text" class="form-control" id="recipient-name" name="body">
+                                                    </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
@@ -79,8 +92,9 @@
                         </div>
                         <hr>
                         <div class="container">
-                            <p>• Web Developer</p>
-                            <p>• App Developer</p>
+                            @foreach ( $skills as $skill)
+                                <p>{{ __('• '. $skill->body) }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

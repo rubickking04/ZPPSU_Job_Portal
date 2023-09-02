@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class Resume extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,8 @@ class Skill extends Model
      */
     protected $fillable = [
         'user_id',
-        'body',
+        'skill_id',
+        'work_id',
+        'educ_id'
     ];
 }

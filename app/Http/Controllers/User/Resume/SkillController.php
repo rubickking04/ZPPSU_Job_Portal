@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User\Resume;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SkillController extends Controller
 {
@@ -20,7 +22,14 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'body' => 'required',
+        ]);
+        $skills = Skill::create([
+            'user_id' => Auth::user()->id,
+            'body' => $request->input('body'),
+        ]);
+        return back()->with('success', 'Skill added successfully.');
     }
 
     /**

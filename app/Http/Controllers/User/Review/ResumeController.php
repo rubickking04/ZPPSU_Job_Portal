@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Review;
 use App\Models\Education;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use App\Models\Work;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,15 @@ class ResumeController extends Controller
     {
         $educations = Education::where('user_id', Auth::user()->id)->get();
         $works = Work::where('user_id', Auth::user()->id)->get();
-        return view('user.review_resume', compact('educations', 'works'));
+        $skills = Skill::where('user_id', Auth::user()->id)->get();
+        foreach ($skills as $skill){
+            $skill_id = $skill->id;
+        }
+        foreach ($educations as $educ){
+            $educ_id = $educ->id;
+        }
+        dd($educ_id);
+        // return view('user.review_resume', compact('educations', 'works', 'skills'));
     }
 
     /**

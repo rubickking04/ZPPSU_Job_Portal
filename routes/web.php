@@ -26,6 +26,7 @@ use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
 use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
 use App\Http\Controllers\Employer\Auth\LogoutController as AuthEmployerLogout;
 use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
+use App\Http\Controllers\User\Resume\SkillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(ResumeController::class)->group(function() {
             Route::get('/resume/builder', 'index')->name('resume.builder');
+        });
+        Route::controller(SkillController::class)->group(function() {
+            Route::post('/resume/add/skills', 'store')->name('add.skills');
         });
         Route::controller(EducationController::class)->group(function() {
             Route::get('/resume/builder/education', 'index')->name('review.education');
