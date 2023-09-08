@@ -3,6 +3,8 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-xl-6">
+                <form action="{{ route('save.resume') }}" method="POST">
+                    @csrf
                 <div class="card">
                     <div class="card-body container">
                         @if ($message = Session::get('success'))
@@ -31,6 +33,7 @@
                         </div>
                         <hr>
                         @foreach ( $works as $work )
+                        <input type="hidden" name="work_id" value="{{ $work->id}}">
                                 <div class="row">
                                     <div class="col-lg-10">
                                         <h4 class="fw-bold lh-1">{{ $work->job_title }}</h4>
@@ -49,6 +52,7 @@
                         </div>
                         <hr>
                         @foreach ( $educations as $education )
+                        <input type="hidden" name="educ_id" value="{{ $education->id}}">
                             <div class="row">
                                 <div class="col-lg-10">
                                     <h4 class="fw-bold lh-1">{{ $education->level_of_education.' in '. $education->field_of_study }}</h4>
@@ -93,12 +97,14 @@
                         <hr>
                         <div class="container">
                             @foreach ( $skills as $skill)
+                            <input type="hidden" name="skill_id" value="{{ $skill->id}}">
                                 <p>{{ __('• '. $skill->body) }}</p>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3">{{ __('Save Resume') }}</button>
+                <button class="btn btn-primary mt-3" type="submit">{{ __('Save Resume') }}</button>
+            </form>
             </div>
         </div>
     </div>

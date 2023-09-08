@@ -87,6 +87,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(ReviewResumeController::class)->group(function() {
             Route::get('/resume/review', 'index')->name('review.resume');
+            Route::post('/resume/review/save', 'store')->name('save.resume');
         });
         Route::controller(ReviewWorkController::class)->group(function() {
             Route::get('/resume/review/work', 'index')->name('review.work');
