@@ -22,8 +22,8 @@
                                     <i class="bi bi-three-dots-vertical fs-5"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-rotate-left me-2"></i>{{ __('Edit') }}</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('edit.work',$work->id) }}"><i class="fa-solid fa-rotate-left me-2"></i>{{ __('Edit') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('destroy.work',$work->id) }}"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
                                 </ul>
                             </div>
                         </div>

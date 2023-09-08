@@ -49,7 +49,16 @@ class WorkController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $works = Work::find($id);
+        $id = $works->id;
+        $job_title = $works->job_title;
+        $comp_name = $works->company_name;
+        $location =  $works->location;
+        $sm = $works->start_month;
+        $sy = $works->start_year;
+        $em = $works->end_month;
+        $ey = $works->end_year;
+        return view('user.edit_work', compact('job_title', 'comp_name','location','sm','sy','em','ey','id'));
     }
 
     /**
@@ -83,6 +92,7 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $work= Work::find($id)->delete();
+        return back()->with('success', 'Deleted successfully.');
     }
 }

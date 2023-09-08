@@ -84,6 +84,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(WorkController::class)->group(function() {
             Route::get('/resume/builder/work', 'index')->name('resume.work');
             Route::post('/resume/builder/work', 'store')->name('add.work');
+            Route::get('/resume/builder/work/edit/{id}', 'show')->name('edit.work');
+            Route::post('/resume/update/work/{id}', 'update')->name('update.work');
+            Route::get('/resume/delete/work/{id}', 'destroy')->name('destroy.work');
         });
         Route::controller(ReviewResumeController::class)->group(function() {
             Route::get('/resume/review', 'index')->name('review.resume');
