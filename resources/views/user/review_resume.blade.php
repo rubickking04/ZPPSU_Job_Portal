@@ -3,8 +3,6 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-xl-6">
-                <form action="{{ route('save.resume') }}" method="POST">
-                    @csrf
                 <div class="card">
                     <div class="card-body container">
                         @if ($message = Session::get('success'))
@@ -103,8 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" type="submit">{{ __('Save Resume') }}</button>
-            </form>
+                <button class="btn btn-primary mt-3" type="button">{{ __('Save Resume') }}</button>
             </div>
         </div>
     </div>

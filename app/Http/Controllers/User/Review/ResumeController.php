@@ -28,13 +28,7 @@ class ResumeController extends Controller
      */
     public function store(Request $request)
     {
-        $resume = Resume::create([
-            'user_id' => Auth::user()->id,
-            'educ_id' => $request->input('educ_id'),
-            'work_id' => $request->input('work_id'),
-            'skill_id' => $request->input('skill_id'),
-        ]);
-        return back()->with('success', 'Saved successfully.');
+        //
     }
 
     /**

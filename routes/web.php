@@ -94,7 +94,6 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(ReviewWorkController::class)->group(function() {
             Route::get('/resume/review/work', 'index')->name('review.work');
-            // Route::post('/resume/builder/work', 'store')->name('add.work');
         });
         Route::controller(AuthUserLogout::class)->group(function() {
             Route::post('/auth/logout', 'logout')->name('user.logout');
