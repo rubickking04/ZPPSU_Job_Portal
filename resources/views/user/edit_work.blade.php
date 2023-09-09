@@ -199,7 +199,7 @@
                             @enderror
                         </div>
                         <div class="text-start mt-3">
-                            <a href="{{ route('review.work') }}"class="text-center btn btn-outline-primary mb-3">{{ __('Cancel')}}</a>
+                            <a href="{{ URL::previous() }}"class="text-center btn btn-outline-primary mb-3">{{ __('Cancel')}}</a>
                             <button type="submit" class="text-center text-white btn btn-primary mb-3">{{ __('Save and Continue')}}</button>
                         </div>
                     </div>

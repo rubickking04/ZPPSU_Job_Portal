@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\File;
+use App\Models\Work;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -66,5 +69,18 @@ class FileController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * View the PDF File.
+     */
+    public function view()
+    {
+        $file = File::where('user_id', Auth::user()->id)->get();
+        foreach($file as $files) {
+            $filePath = public_path().'/storage/files/tmp/'.$files->file_resume;
+        }
+        $pdf = Pdf::loadFile($filePath);
+        return $pdf->stream('My Resume');
     }
 }

@@ -17,5 +17,6 @@ class Skill extends Model
     protected $fillable = [
         'user_id',
         'body',
+        'years_of_exp',
     ];
 }

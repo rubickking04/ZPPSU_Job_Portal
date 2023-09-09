@@ -5,6 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Models\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Education;
+use App\Models\Skill;
+use App\Models\Work;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -15,7 +18,21 @@ class ProfileController extends Controller
     public function index()
     {
         $file = File::where('user_id', Auth::user()->id)->get();
-        return view('user.profile', compact('file'));
+        if ($file->count() >0) {
+            $work = Work::where('user_id', Auth::user()->id)->get();
+            $educ = Education::where('user_id', Auth::user()->id)->get();
+            $skill = Skill::where('user_id', Auth::user()->id)->get();
+            foreach ($file as $files ) {
+                $resume = $files->file_resume;
+                $date = $files->created_at;
+            }
+            return view('user.profile', compact('file', 'work', 'educ', 'skill','resume','date'));
+        }
+        $work = Work::where('user_id', Auth::user()->id)->get();
+        $educ = Education::where('user_id', Auth::user()->id)->get();
+        $skill = Skill::where('user_id', Auth::user()->id)->get();
+        // dd($resume);
+        return view('user.profile', compact('file', 'work', 'educ', 'skill'));
     }
 
     /**

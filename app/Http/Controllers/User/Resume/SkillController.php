@@ -24,10 +24,12 @@ class SkillController extends Controller
     {
         $request->validate([
             'body' => 'required',
+            'years_of_exp' => 'required',
         ]);
         $skills = Skill::create([
             'user_id' => Auth::user()->id,
             'body' => $request->input('body'),
+            'years_of_exp' => $request->input('years_of_exp'),
         ]);
         return back()->with('success', 'Skill added successfully.');
     }

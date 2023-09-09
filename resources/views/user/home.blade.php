@@ -70,7 +70,7 @@
             </div>
             @endif
         @else
-            <h4 class="text-center mt-5 text-muted">{{ __('No products') }}</h4>
+            <h4 class="text-center mt-5 text-muted">{{ __('No Jobs Posted yet.') }}</h4>
         @endif
     </div>
 </div>
