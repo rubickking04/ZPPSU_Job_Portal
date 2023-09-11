@@ -30,7 +30,17 @@ class JobController extends Controller
     public function show(string $id)
     {
         $post_jobs = Job::find($id);
-        return view('user.job');
+        $title = $post_jobs->job_title;
+        $location = $post_jobs->job_location;
+        $comp_name = $post_jobs->employer->company_name;
+        $status = $post_jobs->job_status;
+        $salary = $post_jobs->job_salary;
+        $type = $post_jobs->job_type;
+        $sd = $post_jobs->job_start_date;
+        $ed = $post_jobs->job_end_date;
+        $date = $post_jobs->created_at;
+        // dd($title);
+        return view('user.job',compact('title','location','comp_name','status','salary','type','sd','ed','date'));
     }
 
     /**
