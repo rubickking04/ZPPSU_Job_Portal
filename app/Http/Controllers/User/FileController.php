@@ -68,7 +68,8 @@ class FileController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $file = File::find($id)->delete();
+        return back()->with('success', 'Deleted successfully.');
     }
 
     /**
@@ -80,7 +81,20 @@ class FileController extends Controller
         foreach($file as $files) {
             $filePath = public_path().'/storage/files/tmp/'.$files->file_resume;
         }
-        $pdf = Pdf::loadFile($filePath);
-        return $pdf->stream('My Resume');
+        $pdf = response()->download($filePath, 'example.pdf', [], 'inline');
+        return $pdf;
+    }
+
+    /**
+     * Download the PDF File.
+     */
+    public function download()
+    {
+        $file = File::where('user_id', Auth::user()->id)->get();
+        foreach($file as $files) {
+            $filePath = public_path().'/storage/files/tmp/'.$files->file_resume;
+        }
+        $pdf = response()->download($filePath);
+        return $pdf;
     }
 }

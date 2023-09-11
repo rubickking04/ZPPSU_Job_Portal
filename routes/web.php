@@ -16,6 +16,7 @@ use App\Http\Controllers\User\Review\EducationController as ReviewEducationContr
 
 use App\Http\Controllers\User\Resume\EducationController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
+use App\Http\Controllers\User\JobController as UserJobController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
@@ -57,9 +58,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/auth/register', 'register')->name('user.auth.register');
     });
     Route::controller(UserHomeController::class)->group( function() {
-            Route::get('/home', 'index')->name('user.home');
-            Route::get('/search', 'search')->name('search.job');
-        });
+        Route::get('/home', 'index')->name('user.home');
+        Route::get('/search', 'search')->name('search.job');
+    });
+    Route::controller(UserJobController::class)->group( function() {
+        Route::get('/jobs/{id}', 'show')->name('user.job');
+    });
     Route::middleware('auth')->group(function () {
         Route::controller(ProfileController::class)->group(function() {
             Route::get('/profile', 'index')->name('user.profile');
@@ -68,6 +72,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::post('/fileupload', 'store')->name('file-upload');
             Route::post('/tmp-upload', 'tmpUpload')->name('tmpUpload');
             Route::get('/view/file', 'view')->name('view.pdf');
+            Route::get('/download/file', 'download')->name('download.pdf');
+            Route::get('/destroy/file/{id}', 'destroy')->name('destroy.pdf');
         });
         Route::controller(ResumeController::class)->group(function() {
             Route::get('/resume/builder', 'index')->name('resume.builder');

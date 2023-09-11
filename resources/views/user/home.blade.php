@@ -43,7 +43,7 @@
                     <button class="btn btn-outline-danger" type="submit">Search</button>
                 </form>
                 @foreach ( $post_jobs as $post_job)
-                <a href="" class="card text-decoration-none mb-3 rounded-5">
+                <a href="{{ route('user.job',$post_job->id) }}" class="card text-decoration-none mb-3 shadow rounded-5">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8">
@@ -58,7 +58,7 @@
                             <i class="fa-solid fa-location-dot fs-5 me-2 text-danger"></i>
                             <span class="">{{ $post_job->job_location }}</span>
                         </div>
-                        <button class="btn btn-secondary btn-sm">{{ $post_job->job_title.'a month'}}</button>
+                        <button class="btn btn-secondary btn-sm">{{ 'PHP '.number_format($post_job->job_salary).' a month'}}</button>
                         <button class="btn btn-secondary btn-sm">{{ $post_job->job_type}}</button>
                         <button class="btn btn-secondary btn-sm">{{ $post_job->job_status }}</button>
                         <p class="text-muted small mt-1 lh-sm">{{ $post_job->created_at->diffForHumans().' •' }}

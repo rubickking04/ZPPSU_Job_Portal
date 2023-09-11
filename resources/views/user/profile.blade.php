@@ -75,7 +75,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters">
                                     <div class="col-lg-2 text-center">
-                                        <i class="fa-regular fa-file-pdf display-2"></i>
+                                        <i class="fa-regular text-danger fa-file-pdf display-2"></i>
                                         {{-- <img src="{{asset('/storage/images/avatar.png')}}" alt="avatar" class="rounded-circle img-thumbnail" height="100px" width="100px"> --}}
                                     </div>
                                     <div class="col-lg-8 mt-3">
@@ -88,8 +88,8 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                             <li><a class="dropdown-item" href="{{ route('view.pdf') }}"><i class="fa-solid fa-eye me-2"></i>{{ __('View') }}</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-download me-2"></i>{{ __('Download') }}</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('download.pdf') }}"><i class="fa-solid fa-download me-2"></i>{{ __('Download') }}</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('destroy.pdf',$id) }}"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -98,6 +98,13 @@
                     </div>
                     @else
                         <div class="col-lg-12">
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-dismissible fade show">
+                                    <i class="fa-solid fa-check me-2"></i>
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
                             @error('file_resume')
                             <div class="alert alert-danger">
                                 <i class="fa-solid fa-circle-exclamation me-2"></i>

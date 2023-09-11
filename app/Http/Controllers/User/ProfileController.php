@@ -23,10 +23,11 @@ class ProfileController extends Controller
             $educ = Education::where('user_id', Auth::user()->id)->get();
             $skill = Skill::where('user_id', Auth::user()->id)->get();
             foreach ($file as $files ) {
+                $id = $files->id;
                 $resume = $files->file_resume;
                 $date = $files->created_at;
             }
-            return view('user.profile', compact('file', 'work', 'educ', 'skill','resume','date'));
+            return view('user.profile', compact('file', 'work', 'educ', 'skill','resume','date','id'));
         }
         $work = Work::where('user_id', Auth::user()->id)->get();
         $educ = Education::where('user_id', Auth::user()->id)->get();
