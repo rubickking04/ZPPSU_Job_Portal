@@ -39,8 +39,9 @@ class JobController extends Controller
         $sd = $post_jobs->job_start_date;
         $ed = $post_jobs->job_end_date;
         $date = $post_jobs->created_at;
+        $description = $post_jobs->job_description;
         // dd($title);
-        return view('user.job',compact('title','location','comp_name','status','salary','type','sd','ed','date'));
+        return view('user.job',compact('title','location','comp_name','status','salary','type','sd','ed','date','description'));
     }
 
     /**

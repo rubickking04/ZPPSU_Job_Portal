@@ -4,14 +4,11 @@
     <div class="row justify-content-center">
         <div class="col-xl-6">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h4>{{ $title }}</h4>
+                            <h3>{{ $title }}</h3>
                         </div>
-                        {{-- <div class="col-lg-4 text-end">
-                            <i class="bi bi-three-dots-vertical fs-5"></i>
-                        </div> --}}
                     </div>
                     <p class="text-muted lh-1">{{ $comp_name }}</p>
                     <div class="text-muted lh-1 mb-2">
@@ -19,11 +16,30 @@
                         <span class="">{{ $location }}</span>
                     </div>
                     <button class="btn btn-secondary btn-sm">{{ 'PHP '.number_format($salary).' a month'}}</button>
-                    <button class="btn btn-secondary btn-sm">{{ $type}}</button>
-                    <button class="btn btn-secondary btn-sm">{{ $status }}</button>
                     <p class="text-muted small mt-1 lh-sm">{{ $date->diffForHumans().' •' }}
                         <i class="fa-solid fa-earth-asia me-1"></i>
                     </p>
+                </div>
+                <div class="card-body">
+                    <h4>{{ __('Job Details') }}</h4>
+                    <p class="text-muted small mb-3">{{ __('Here are some details aligned with this job.') }}</p>
+                    <div class="card-title">
+                        <i class="fa-solid fa-money-bills me-2 text-muted fs-5"></i>
+                        <span class="">{{ __('Salary') }}</span>
+                    </div>
+                    <button class="btn btn-secondary btn-sm mx-4">{{ 'PHP '.number_format($salary).' a month'}}</button>
+                    <div class="card-title mt-4">
+                        <i class="fa-solid fa-briefcase me-2 text-muted fs-5"></i>
+                        <span class="">{{ __('Job Type') }}</span>
+                    </div>
+                    <button class="btn btn-secondary btn-sm ms-4">{{ $type }}</button>
+                    <button class="btn btn-secondary btn-sm ms-2">{{ $status }}</button>
+                    <hr>
+                    <h5>{{ __('Full Job Description') }}</h5>
+                    <p class="mt-4">{{ $description }}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary">{{ __('Apply Now') }}</button>
                 </div>
             </div>
         </div>
