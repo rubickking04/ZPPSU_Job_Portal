@@ -126,6 +126,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(JobController::class)->group( function() {
             Route::get('/employer/jobs', 'index')->name('employer.jobs');
+            Route::post('/employer/job/update/{id}','update')->name('post.job.update');
+            Route::get('/employer/job/destroy/{id}', 'destroy')->name('post.job.deestroy');
         });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');
