@@ -75,7 +75,7 @@
                                                             <h5>{{ __('Full Job Description') }}</h5>
                                                             <p class="mt-4">{{ $job->job_description }}</p>
                                                             <div class="text-end">
-                                                                <button type="button"class="btn btn-primary col-3">{{ __('View All') }}</button>
+                                                                <a href="{{ route('employer.job.details',$job->id) }}" class="btn btn-primary col-3">{{ __('View All') }}</a>
                                                                 <button type="button"class="btn btn-danger col-3" data-bs-dismiss="modal">{{ __('Close') }}</button>
                                                             </div>
                                                         </div>

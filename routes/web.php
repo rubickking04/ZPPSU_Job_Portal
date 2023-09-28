@@ -9,14 +9,13 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
 use App\Http\Controllers\User\Resume\WorkController;
+use App\Http\Controllers\User\Resume\SkillController;
 use App\Http\Controllers\User\Resume\ResumeController;
-use App\Http\Controllers\User\Review\WorkController as ReviewWorkController;
-use App\Http\Controllers\User\Review\ResumeController as ReviewResumeController;
-use App\Http\Controllers\User\Review\EducationController as ReviewEducationController;
-
+use App\Http\Controllers\Employer\JobDetailsController;
 use App\Http\Controllers\User\Resume\EducationController;
-use App\Http\Controllers\User\HomeController as UserHomeController;
+
 use App\Http\Controllers\User\JobController as UserJobController;
+use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
@@ -25,9 +24,11 @@ use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
 use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
 use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
 use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
+use App\Http\Controllers\User\Review\WorkController as ReviewWorkController;
 use App\Http\Controllers\Employer\Auth\LogoutController as AuthEmployerLogout;
+use App\Http\Controllers\User\Review\ResumeController as ReviewResumeController;
 use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
-use App\Http\Controllers\User\Resume\SkillController;
+use App\Http\Controllers\User\Review\EducationController as ReviewEducationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,9 +127,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(JobController::class)->group( function() {
             Route::get('/employer/jobs', 'index')->name('employer.jobs');
+            Route::get('/employer/jobs/details/{id}', 'show')->name('employer.job.details');
             Route::post('/employer/job/update/{id}','update')->name('post.job.update');
-            Route::get('/employer/job/destroy/{id}', 'destroy')->name('post.job.deestroy');
+            Route::get('/employer/job/destroy/{id}', 'destroy')->name('post.job.destroy');
         });
+        // Route::controller(JobDetailsController::class)->group( function() {
+        //     Route::get('/employer/jobs/details/{id}', 'index')->name('employer.job.details');
+        // });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');
             Route::post('/employer/post/jobs', 'store')->name('post.job');
