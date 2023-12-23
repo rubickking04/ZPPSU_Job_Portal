@@ -51,4 +51,13 @@ class User extends Authenticatable
     public function file_resume(){
         return $this->hasOne(File::class, 'user_id');
     }
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function applications(){
+        return $this->hasOne(Applicant::class, 'user_id');
+    }
 }

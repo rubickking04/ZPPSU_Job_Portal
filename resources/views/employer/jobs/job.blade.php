@@ -30,12 +30,12 @@
                                     <td>Actions</td>
                                 </tr>
                             </thead>
-                            <tbody class="table-group-divider text-primary text-opacity-75">
+                            <tbody class="table-group-divider text-primary text-opacity-75 py-5">
                                 @foreach ( $jobs as $job)
                                     <tr>
                                         <td><a href="" class="text-decoration-none">{{ $job->job_title }}</a></td>
-                                        <td class="text-danger">24</td>
-                                        <td class="text-success">5</td>
+                                        <td class="text-danger">{{ $job->applicants->count() }}</td>
+                                        <td class="text-success">4</td>
                                         <td>{{ $job->created_at->toDayDateTimeString() }}</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal"data-bs-target="#exampleModalCenter{{ $job->id }}"><i class="fa-solid fa-eye"></i></button>

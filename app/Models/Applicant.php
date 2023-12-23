@@ -28,4 +28,22 @@ class Applicant extends Model
     protected $dates = [
         'deleted_at',
     ];
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function jobs(){
+        return $this->belongsTo(Job::class, 'job_id');
+    }
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

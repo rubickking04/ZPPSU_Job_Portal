@@ -13,6 +13,7 @@ use App\Http\Controllers\User\Resume\SkillController;
 use App\Http\Controllers\User\Resume\ResumeController;
 use App\Http\Controllers\Employer\JobDetailsController;
 use App\Http\Controllers\User\Resume\EducationController;
+use App\Http\Controllers\User\ApplicationController as ApplicantController;
 
 use App\Http\Controllers\User\JobController as UserJobController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
@@ -96,6 +97,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::post('/resume/update/work/{id}', 'update')->name('update.work');
             Route::get('/resume/delete/work/{id}', 'destroy')->name('destroy.work');
         });
+        Route::controller(ApplicantController::class)->group(function() {
+            Route::post('/job/apply', 'store')->name('job.apply');
+        });
         Route::controller(ReviewResumeController::class)->group(function() {
             Route::get('/resume/review', 'index')->name('review.resume');
             Route::post('/resume/review/save', 'store')->name('save.resume');
@@ -127,13 +131,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(JobController::class)->group( function() {
             Route::get('/employer/jobs', 'index')->name('employer.jobs');
-            Route::get('/employer/jobs/details/{id}', 'show')->name('employer.job.details');
+            // Route::get('/employer/jobs/details/{id}', 'show')->name('employer.job.details');
             Route::post('/employer/job/update/{id}','update')->name('post.job.update');
             Route::get('/employer/job/destroy/{id}', 'destroy')->name('post.job.destroy');
         });
-        // Route::controller(JobDetailsController::class)->group( function() {
-        //     Route::get('/employer/jobs/details/{id}', 'index')->name('employer.job.details');
-        // });
+        Route::controller(JobDetailsController::class)->group( function() {
+            Route::get('/employer/job/details/{id}', 'index')->name('employer.job.details');
+        });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');
             Route::post('/employer/post/jobs', 'store')->name('post.job');

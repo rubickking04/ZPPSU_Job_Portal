@@ -34,4 +34,13 @@ class Job extends Model
     public function employer(){
         return $this->belongsTo(Employer::class, 'user_id');
     }
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function applicants(){
+        return $this->hasmany(Applicant::class, 'job_id');
+    }
 }

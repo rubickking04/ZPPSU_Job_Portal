@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers\Employer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class JobDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('employer.jobs.job_details');
+        $applicant = Applicant::with('user.file_resume')->where('job_id', $id)->get();
+        // dd($applicant);
+        return view('employer.jobs.job_details', compact('applicant'));
     }
 
     /**

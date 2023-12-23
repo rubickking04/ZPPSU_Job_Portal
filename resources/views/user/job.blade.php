@@ -5,6 +5,13 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header">
+                    @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <i class="fa-solid fa-check me-2"></i>
+                                <strong>{{ $message }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
                     <div class="row">
                         <div class="col-lg-8">
                             <h3>{{ $title }}</h3>
@@ -37,9 +44,14 @@
                     <hr>
                     <h5>{{ __('Full Job Description') }}</h5>
                     <p class="mt-4">{{ $description }}</p>
+                    <p>{{ $job_id }}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">{{ __('Apply Now') }}</button>
+                    <form action="{{ route('job.apply') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="job_id" value="{{ $job_id }}">
+                        <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                    </form>
                 </div>
             </div>
         </div>

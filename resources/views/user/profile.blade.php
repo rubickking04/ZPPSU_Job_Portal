@@ -49,11 +49,9 @@
                                 <div class="row no-gutters">
                                     <div class="col-lg-2 text-center">
                                         <i class="fa-regular fa-file display-4"></i>
-                                        {{-- <img src="{{asset('/storage/images/avatar.png')}}" alt="avatar" class="rounded-circle img-thumbnail" height="100px" width="100px"> --}}
                                     </div>
                                     <div class="col-lg-8 mt-3">
                                         <h3 class="card-title">ZPPSU Job Post Resume</h3>
-                                        {{-- <p class="small text-muted">Uploaded by </p> --}}
                                     </div>
                                 </div>
                             </div>
