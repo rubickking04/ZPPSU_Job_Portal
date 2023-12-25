@@ -66,10 +66,7 @@
                         <a class="nav-link list-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Job Feed') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link list-link active" href="#">{{ __('My Jobs') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link list-link active" href="#">Pricing</a>
+                        <a class="nav-link list-link active" href="{{ route('application.history') }}">{{ __('History') }}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">

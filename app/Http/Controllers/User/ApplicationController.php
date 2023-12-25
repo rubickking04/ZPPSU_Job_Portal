@@ -14,7 +14,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        //
+        $applicant = Applicant::withTrashed()->where('user_id','=', Auth::user()->id)->latest()->paginate(10);
+        return view('user.history', compact('applicant'));
     }
 
     /**
