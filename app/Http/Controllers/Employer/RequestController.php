@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Employer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
@@ -12,7 +14,9 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return view('employer.request');
+        $applicant = Applicant::withTrashed()->where('employer_id','=', Auth::user()->id)->latest()->paginate(10);
+        // dd($applicants);
+        return view('employer.request', compact('applicant'));
     }
 
     /**

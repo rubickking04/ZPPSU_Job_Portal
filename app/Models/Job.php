@@ -41,6 +41,6 @@ class Job extends Model
      *
      */
     public function applicants(){
-        return $this->hasmany(Applicant::class, 'job_id');
+        return $this->hasMany(Applicant::class, 'job_id');
     }
 }

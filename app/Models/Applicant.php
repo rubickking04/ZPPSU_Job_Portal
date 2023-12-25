@@ -16,6 +16,7 @@ class Applicant extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'employer_id',
         'user_id',
         'job_id',
     ];

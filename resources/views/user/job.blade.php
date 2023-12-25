@@ -44,11 +44,12 @@
                     <hr>
                     <h5>{{ __('Full Job Description') }}</h5>
                     <p class="mt-4">{{ $description }}</p>
-                    <p>{{ $job_id }}</p>
+                    <p>{{ $emp_id }}</p>
                 </div>
                 <div class="card-footer">
                     <form action="{{ route('job.apply') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="employer_id" value="{{ $emp_id }}">
                         <input type="hidden" name="job_id" value="{{ $job_id }}">
                         <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
                     </form>

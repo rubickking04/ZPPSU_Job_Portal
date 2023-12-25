@@ -25,6 +25,7 @@ class ApplicationController extends Controller
         // dd("applied successfully");
         $applicant = Applicant::create([
             'user_id'=> Auth::user()->id,
+            'employer_id' => $request->input('employer_id'),
             'job_id' => $request->input('job_id'),
         ]);
         return back()->with('success', 'Application submitted successfully.');

@@ -41,11 +41,6 @@
                                 @else
                                     <td class="text-warning text-center">{{ __('Pending') }}</td>
                                 @endif
-                                {{-- @if ( $applicants->user->file_resume)
-                                    <td class="text-center"><i class="fa-solid fs-4 fa-download text-success"></i></td>
-                                @else
-                                <td class="text-center"><i class="fa-solid fs-4 fa-download"></i></td>
-                                @endif --}}
                                 <td class="text-center">{{ $applicants->created_at->toDayDateTimeString() }}</td>
                                 <td class="text-center">
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{ $applicants->id }}"><i class="fa-solid fa-eye"></i></button>
