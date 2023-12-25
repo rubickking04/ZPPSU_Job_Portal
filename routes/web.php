@@ -19,6 +19,10 @@ use App\Http\Controllers\User\JobController as UserJobController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\EmployerController as AdminEmployerController;
+use App\Http\Controllers\Admin\JobController as AdminJobController;
+use App\Http\Controllers\Admin\ApplicantController as AdminApplicantController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
 use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
 use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
@@ -164,6 +168,18 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::middleware('auth:admin')->group(function () {
         Route::controller(AdminHomeController::class)->group(function() {
             Route::get('/admin/home', 'index')->name('admin.home');
+        });
+        Route::controller(AdminUserController::class)->group(function() {
+            Route::get('/admin/user', 'index')->name('admin.users');
+        });
+        Route::controller(AdminJobController::class)->group(function() {
+            Route::get('/admin/job', 'index')->name('admin.jobs');
+        });
+        Route::controller(AdminEmployerController::class)->group(function() {
+            Route::get('/admin/employer', 'index')->name('admin.employers');
+        });
+        Route::controller(AdminApplicantController::class)->group(function() {
+            Route::get('/admin/applicant', 'index')->name('admin.applicants');
         });
         Route::controller(AuthAdminLogout::class)->group(function() {
             Route::post('/admin/logout', 'logout')->name('admin.logout');

@@ -68,25 +68,25 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('employer.posts.jobs') }}" class="nav-link text-truncate">
+                        <a href="{{ route('admin.employers') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-briefcase   text-white"></i>
                             <span class="ms-2  text-white" aria-current="page">{{ __('Employers') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('employer.jobs') }}" class="nav-link text-truncate">
+                        <a href="{{ route('admin.users') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-user text-white"></i>
                             <span class="ms-2  text-white" aria-current="page">{{ __('Users') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('employer.requests') }}" class="nav-link text-truncate">
+                        <a href="{{ route('admin.jobs') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-comment-dots  text-white"></i>
                             <span class="ms-2  text-white" aria-current="page">{{ __('Jobs') }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('employer.requests') }}" class="nav-link text-truncate">
+                        <a href="{{ route('admin.applicants') }}" class="nav-link text-truncate">
                             <i class="fs-4 fa-solid fa-user-check  text-white"></i>
                             <span class="ms-2  text-white" aria-current="page">{{ __('Applicant') }}</span>
                         </a>
