@@ -30,27 +30,71 @@
         </div>
         <hr>
         @foreach ( $works as $work )
-                                <div class="row">
-                                    <div class="col-lg-10">
-                                        <h4 class="fw-bold lh-1">{{ $work->job_title }}</h4>
-                                    </div>
-                                    <div class="col-lg-2 text-end">
-                                        <div class="row g-3">
-                                            <div class="col-lg-6">
-                                                <a href="{{ route('edit.work',$work->id) }}" class="btn btn-warning border-0 fs-5" >
-                                                    <i class="fa-solid fa-pencil"></i>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <a href="{{ route('destroy.work',$work->id) }}" class="btn btn-danger border-0 fs-5 " >
-                                                    <i class="fa-solid fa-trash-can "></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-muted lh-1">{{ $work->company_name }}</p>
-                                <p class="text-muted lh-1">{{ $work->start_month. ' ' .$work->start_year . ' to ' . $work->end_month . ' '. $work->end_year }}</p>
-                            @endforeach
+            <div class="row">
+                <div class="col-lg-10">
+                    <h4 class="fw-bold lh-1">{{ $work->job_title }}</h4>
+                </div>
+                <div class="col-lg-2 text-end">
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <a href="{{ route('edit.work',$work->id) }}" class="btn btn-warning border-0 fs-5" >
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="{{ route('destroy.work',$work->id) }}" class="btn btn-danger border-0 fs-5 " >
+                                <i class="fa-solid fa-trash-can "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted lh-1">{{ $work->company_name }}</p>
+            <p class="text-muted lh-1">{{ $work->start_month. ' ' .$work->start_year . ' to ' . $work->end_month . ' '. $work->end_year }}</p>
+        @endforeach
+        <div class="row">
+            <div class="col-lg-8">
+                <h4 class="mt-4 text-muted fw-bold">{{ __('Education') }}</h4>
+            </div>
+        </div>
+        <hr>
+        @foreach ( $educations as $education )
+            <div class="row">
+                <div class="col-lg-10">
+                    <h4 class="fw-bold lh-1">{{ $education->level_of_education.' in '. $education->field_of_study }}</h4>
+                </div>
+                <div class="col-lg-2 text-end">
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <a href="{{ route('edit.education',$education->id) }}" class="btn btn-warning border-0 fs-5" >
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="{{ route('delete.education',$education->id) }}" class="btn btn-danger border-0 fs-5 " >
+                                <i class="fa-solid fa-trash-can "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted lh-1">{{ $education->school_name }}</p>
+            <p class="text-muted lh-1">{{ $education->start_month. ' ' .$education->start_year . ' to ' . $education->end_month . ' '. $education->end_year }}</p>
+        @endforeach
+        <div class="row">
+            <div class="col-lg-8">
+                <h4 class="mt-4 text-muted fw-bold">{{ __('Skill') }}</h4>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            @if ($skills->count())
+                @foreach ( $skills as $skill)
+                    <p>{{ __('• '. $skill->body . ' - ' . $skill->years_of_exp) }}</p>
+                @endforeach
+            @else
+                <p>Your skills will appear here</p>
+            @endif
+        </div>
     </body>
 </html>

@@ -90,6 +90,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
             Route::post('/resume/builder/education/{id}', 'update')->name('update.education');
             Route::get('/resume/builder/education/delete/{id}', 'destroy')->name('delete.education');
         });
+        Route::get('/download', [App\Http\Controllers\User\DownloadResumeController::class, 'index'])->name('download');
         Route::controller(WorkController::class)->group(function() {
             Route::get('/resume/builder/work', 'index')->name('resume.work');
             Route::post('/resume/builder/work', 'store')->name('add.work');
@@ -137,6 +138,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(JobDetailsController::class)->group( function() {
             Route::get('/employer/job/details/{id}', 'index')->name('employer.job.details');
+            Route::get('/employer/job/approve/{id}','soft_destroy')->name('approve.job');
         });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');

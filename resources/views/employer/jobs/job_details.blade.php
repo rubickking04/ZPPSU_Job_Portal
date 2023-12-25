@@ -94,36 +94,46 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="container text-start">
-                                                    <div class="card mb-3">
-                                                        <div class="card-body">
-                                                            <div class="row no-gutters">
-                                                                <div class="col-lg-2 text-center">
-                                                                    <i class="fa-regular text-danger fa-file-pdf display-2"></i>
-                                                                    {{-- <img src="{{asset('/storage/images/avatar.png')}}" alt="avatar" class="rounded-circle img-thumbnail" height="100px" width="100px"> --}}
-                                                                </div>
-                                                                <div class="col-lg-8 mt-3">
-                                                                    {{-- <p class="card-title">{{ $applicants->user->file_resume->file_resume }}</p> --}}
-                                                                    <p class="small text-muted">{{ ('Applied '.$applicants->created_at->diffForHumans()) }}</p>
-                                                                </div>
-                                                                <div class="col-lg-2 text-end">
-                                                                    <a href="#" class="btn btn-outline-dark border-0 fs-5 rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                        <i class="bi bi-three-dots-vertical fs-5"></i>
-                                                                    </a>
-                                                                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                                                                        <li><a class="dropdown-item" href="{{ route('view.pdf') }}"><i class="fa-solid fa-eye me-2"></i>{{ __('View') }}</a></li>
-                                                                        <li><a class="dropdown-item" href="{{ route('download.pdf') }}"><i class="fa-solid fa-download me-2"></i>{{ __('Download') }}</a></li>
-                                                                        <li><a class="dropdown-item" href="{{ route('destroy.pdf',$applicants->id) }}"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
-                                                                    </ul>
+                                                @if ($applicants->user->file_resume)
+                                                    <div class="container text-start">
+                                                        <div class="card mb-3">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters">
+                                                                    <div class="col-lg-2 text-center">
+                                                                        <i class="fa-regular text-danger fa-file-pdf display-2"></i>
+                                                                        {{-- <img src="{{asset('/storage/images/avatar.png')}}" alt="avatar" class="rounded-circle img-thumbnail" height="100px" width="100px"> --}}
+                                                                    </div>
+                                                                    <div class="col-lg-8 mt-3">
+                                                                        <p class="card-title">{{ $applicants->user->file_resume->file_resume }}</p>
+                                                                        <p class="small text-muted">{{ ('Applied '.$applicants->created_at->diffForHumans()) }}</p>
+                                                                    </div>
+                                                                    <div class="col-lg-2 text-end">
+                                                                        <a href="#" class="btn btn-outline-dark border-0 fs-5 rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                            <i class="bi bi-three-dots-vertical fs-5"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                                            <li><a class="dropdown-item" href="{{ route('view.pdf') }}"><i class="fa-solid fa-eye me-2"></i>{{ __('View') }}</a></li>
+                                                                            <li><a class="dropdown-item" href="{{ route('download.pdf') }}"><i class="fa-solid fa-download me-2"></i>{{ __('Download') }}</a></li>
+                                                                            <li><a class="dropdown-item" href="{{ route('destroy.pdf',$applicants->id) }}"><i class="fa-solid fa-trash-can me-2"></i>{{ __('Delete') }}</a></li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                @else
+                                                <p class="mb-5">No resume</p>
+                                                @endif
+                                                @if ($applicants->deleted_at)
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Approved</button>
                                                 </div>
+                                                @else
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Approve</button>
+                                                    <a href="{{ route('approve.job',$applicants->id) }}" type="button" class="btn btn-primary">Approve</a>
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -132,6 +142,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $applicant->links() }}
                 </div>
             </div>
         </div>

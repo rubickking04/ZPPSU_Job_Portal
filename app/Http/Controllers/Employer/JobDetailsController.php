@@ -13,7 +13,7 @@ class JobDetailsController extends Controller
      */
     public function index($id)
     {
-        $applicant = Applicant::with('user.file_resume')->where('job_id', $id)->get();
+        $applicant = Applicant::with('user.file_resume')->withTrashed()->where('job_id', $id)->paginate(10);
         // dd($applicant);
         return view('employer.jobs.job_details', compact('applicant'));
     }
@@ -45,8 +45,9 @@ class JobDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function soft_destroy(string $id)
     {
-        //
+        $applicant = Applicant::find($id)->delete();
+        return back()->with('success', 'Approved successfully.');
     }
 }

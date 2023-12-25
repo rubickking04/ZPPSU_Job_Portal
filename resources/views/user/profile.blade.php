@@ -42,25 +42,7 @@
                 </div>
                 <h4>{{ __('Resume') }}</h4>
                 <div class="row justify-content-center">
-                    @if ($work->count() || $educ->count() || $skill->count())
-                    <div class="container">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-2 text-center">
-                                        <i class="fa-regular fa-file display-4"></i>
-                                    </div>
-                                    <div class="col-lg-8 mt-3">
-                                        <h3 class="card-title">ZPPSU Job Post Resume</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <a href="{{ route('review.resume') }}" class="btn btn-lg btn-outline-primary w-100">{{ __('View Resume') }}</a>
-                    </div>
-                    @elseif ($file->count())
+                    @if ($file->count())
                     <div class="container">
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-dismissible fade show">
@@ -127,9 +109,18 @@
                         <div class="col-lg-5">
                             <hr>
                         </div>
+                        @if ($work->count() || $educ->count() || $skill->count())
+                        <div class="col-lg-6">
+                            <a href="{{ route('download') }}" class="btn btn-lg btn-outline-primary w-100">{{ __('Download my Resume') }}</a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="{{ route('review.resume') }}" class="btn btn-lg btn-outline-primary w-100">{{ __('View Resume') }}</a>
+                        </div>
+                        @else
                         <div class="col-lg-12">
                             <a href="{{ route('resume.builder') }}" class="btn btn-lg btn-outline-primary w-100">{{ __('Build a Resume') }}</a>
                         </div>
+                        @endif
                     @endif
                 </div>
                 <p class="text-muted small mt-2">{{ __('By continuing, you agree to receive job opportunities from ZPPSU Job Portal.') }}</p>

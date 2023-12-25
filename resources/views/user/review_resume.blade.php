@@ -158,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" type="button">{{ __('Save Resume') }}</button>
+                <a href="{{ route('download') }}" class="btn btn-primary mt-3" >{{ __('Save Resume') }}</a>
             </div>
         </div>
     </div>
