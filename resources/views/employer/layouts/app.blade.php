@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-truncate">
+                        <a href="{{ route('employer.home') }}" class="nav-link text-truncate">
                             <i class="fs-4 bi bi-graph-up-arrow  text-danger"></i>
                             <span class="ms-2 text-black" aria-current="page">{{ __('Dashboard') }}</span>
                         </a>

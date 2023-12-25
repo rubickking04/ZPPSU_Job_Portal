@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Employer;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('employer.home');
+        $applicant = Applicant::with('user')->onlyTrashed()->latest()->paginate(10);
+        // dd($applicant);
+        return view('employer.home', compact('applicant'));
     }
 
     /**

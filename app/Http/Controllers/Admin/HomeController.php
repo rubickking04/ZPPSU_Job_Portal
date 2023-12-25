@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::latest()->paginate(10);
+        // dd($user);
+        return view('admin.home', compact('user'));
     }
 
     /**
