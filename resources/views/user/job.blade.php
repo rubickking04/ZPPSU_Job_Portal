@@ -44,7 +44,6 @@
                     <hr>
                     <h5>{{ __('Full Job Description') }}</h5>
                     <p class="mt-4">{{ $description }}</p>
-                    <p>{{ $emp_id }}</p>
                 </div>
                 <div class="card-footer">
                     <form action="{{ route('job.apply') }}" method="POST">
