@@ -105,6 +105,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(ApplicantController::class)->group(function() {
             Route::get('/job/history', 'index')->name('application.history');
             Route::post('/job/apply', 'store')->name('job.apply');
+            Route::get('/job/history/search', 'search')->name('job.apply.search');
         });
         Route::controller(ReviewResumeController::class)->group(function() {
             Route::get('/resume/review', 'index')->name('review.resume');
