@@ -28,6 +28,20 @@ class JobController extends Controller
     }
 
     /**
+     * Search the specified resource.
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $jobs = Job::where('job_title', 'LIKE', '%' . $search . '%')->orWhere('job_type', 'LIKE', '%' . $search . '%')->orWhere('job_status', 'LIKE', '%' . $search . '%')->orWhere('job_salary', 'LIKE', '%' . $search . '%')->paginate(10);
+        if (count($jobs) > 0) {
+            return view('employer.jobs.job', compact('jobs'))->with('success', 'Search result for "' . $search . '"');
+        } else {
+            return redirect()->route('employer.jobs')->with('message', 'We couldn\'t find "' . $search . '" on this page.');
+        }
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $id)

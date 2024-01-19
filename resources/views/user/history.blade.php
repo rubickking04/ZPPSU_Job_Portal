@@ -8,7 +8,7 @@
                     <div class="text-start py-3 fs-4 fw-bold card-title">{{ __('My Uploaded Applications') }}
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
+                {{-- <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
                     <form action="{{ route('job.apply.search') }}" method="GET" role="search" class="d-flex">
                         @csrf
                         <input class="form-control me-2 " type="search" name="search" placeholder="Search Job role" aria-label="Search">
@@ -16,8 +16,16 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                </div>
+                </div> --}}
             </div>
+            @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <i class="fa-solid fa-check me-2"></i>
+                                <strong>{{ $message }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+            @if($applicant->count())
             <div class="card mt-3 shadow rounded-5">
                 <div class="card-body">
                     @if (session('msg'))
@@ -70,7 +78,7 @@
                                 @endif
                                 <td class="text-center">{{ $applicants->created_at->toDayDateTimeString() }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                                    <a href="{{ route('job.apply.destroy', $applicants->id) }}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-rotate-left"></i></a>
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{ $applicants->id }}"><i class="fa-solid fa-eye"></i></button>
                                     <div class="modal fade" id="exampleModalCenter{{ $applicants->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -169,6 +177,19 @@
                     {{ $applicant->links() }}
                 </div>
             </div>
+            @else
+                <div class="col-lg-12 mb-3 ">
+                    <div class="mb-3 py-4">
+                        <div class="text-center display-1">
+                            <i class="fa-solid fa-users-slash display-1"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fs-3 text-center">
+                                {{ __('No Applications yet.') }}</h5>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

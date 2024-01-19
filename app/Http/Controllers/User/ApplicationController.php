@@ -71,6 +71,7 @@ class ApplicationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $applicant = Applicant::find($id)->forceDelete();
+        return back()->with('message', 'Application withdrawed successfully');
     }
 }

@@ -9,7 +9,7 @@
                             <div class="card-body h-100">
                                 <div class="row">
                                     <div class="col-lg-9 col-sm-6 col-6 col-md-auto">
-                                        <h2 class="users-count" id="users-count">{{ number_format(App\Models\User::all()->count()) }}</h2>
+                                        <h2 class="users-count" id="users-count">{{ number_format(App\Models\Job::where('user_id', Auth::guard('employer')->user()->id)->count()) }}</h2>
                                         <h5>{{ __('Total Users') }}</h5>
                                     </div>
                                     <div class="col-lg-3 col-sm-6 col-md-auto col-6 mt-3 text-end">
@@ -24,41 +24,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-9 col-sm-6 col-6 col-md-auto">
-                                        <h2>{{ number_format(App\Models\Employer::all()->count()) }}</h2>
+                                        <h2>{{ number_format(App\Models\Applicant::where('employer_id', Auth::guard('employer')->user()->id)->withTrashed()->count()) }}</h2>
                                         <h5>{{ __('Total Employers') }}</h5>
                                     </div>
                                     <div class="col-lg-3 col-sm-6 col-md-auto text-end col-6 mt-3 ">
                                         <i class="mdi mdi-clipboard-multiple fs-1"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-9 col-sm-6 col-6 col-md-auto">
-                                        <h2>{{ number_format(App\Models\Job::all()->count()) }}</h2>
-                                        <h5>{{ __('Total Jobs') }}</h5>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 col-md-auto text-end col-6 mt-3 ">
-                                        <i class="mdi mdi-clipboard-multiple fs-1"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-9 col-sm-6 col-6 col-md-auto">
-                                        <h2>{{ number_format(App\Models\Applicant::onlyTrashed()->count()) }}</h2>
-                                        <h5>{{ __('Approved Applicants') }}</h5>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 col-md-auto col-6 text-end col-6 mt-3 ">
-                                        <i class="mdi mdi-clipboard-check-multiple fs-1"></i>
                                     </div>
                                 </div>
                             </div>
@@ -129,8 +99,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{-- {!! $chart->container() !!}
-                        {!! $chart->script() !!} --}}
+                        {!! $chart->container() !!}
+                        {!! $chart->script() !!}
                     </div>
                 </div>
             </div>

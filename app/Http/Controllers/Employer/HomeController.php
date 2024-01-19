@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Employer;
 
+use App\Charts\EmployerChart;
+use App\Models\Job;
+use App\Models\Applicant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Applicant;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,8 +17,24 @@ class HomeController extends Controller
     public function index()
     {
         $applicant = Applicant::with('user')->onlyTrashed()->latest()->paginate(10);
+        $applicants = Applicant::where('employer_id', Auth::guard('employer')->user()->id)->withTrashed()->count();
+        $jobs = Job::where('user_id', Auth::guard('employer')->user()->id)->count();
+        $chart = new EmployerChart;
+        $chart->labels(['Jobs', 'Applicants',]);
+        $chart->dataset('My system Data', 'doughnut', [$jobs, $applicants])
+            ->color(collect([
+                'rgba(255, 99, 132)',
+                'rgba(255, 159, 64)',
+                'rgba(255, 205, 86)',
+                'rgba(75, 192, 192)',]
+            ))->backgroundColor(collect([
+                'rgba(255, 99, 132)',
+                'rgba(255, 159, 64)',
+                'rgba(255, 205, 86)',
+                'rgba(75, 192, 192)',]
+            ));
         // dd($applicant);
-        return view('employer.home', compact('applicant'));
+        return view('employer.home', compact('applicant', 'chart'));
     }
 
     /**
