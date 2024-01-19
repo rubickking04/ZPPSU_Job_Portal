@@ -135,8 +135,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {{-- {!! $chart->container() !!}
-                    {!! $chart->script() !!} --}}
+                    {!! $chart->container() !!}
+                    {!! $chart->script() !!}
                 </div>
             </div>
         </div>

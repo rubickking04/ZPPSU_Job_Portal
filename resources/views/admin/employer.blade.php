@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
-                    <form action="#" method="GET" role="search" class="d-flex">
+                    <form action="{{ route('admin.search.employers') }}" method="GET" role="search" class="d-flex">
                         @csrf
                         <input class="form-control me-2 " type="search" name="search" placeholder="Search Company Name or Employers Name" aria-label="Search">
                         <button class="btn btn-primary" type="submit">
@@ -24,8 +24,41 @@
                     </form>
                 </div>
             </div>
+            @if($employer->count())
             <div class="card mt-3 shadow rounded-5">
                 <div class="card-body">
+                    @if (Session::has('success'))
+                        <p>{{ Session::get('success') }}</p>
+                    @endif
+                    @if (session('message'))
+                        <div class="col-lg-12 py-3">
+                            <div class="text-center justify-content-center">
+                                <i class="bi bi-exclamation-triangle-fill fs-1 text-warning text-center"></i>
+                            </div>
+                            <div class="card-body">
+                                <p class="h2 fw-bold text-danger text-center">{{ __('ERROR 404 | Not Found!') }}</p>
+                                <h5 class="card-title fw-bold text-center">{{ session('message') }}</h5>
+                                <p class="card-text fw-bold text-center text-muted">{{ __('Sorry, but the query you were looking for was either not found or does not exist.') }} </p>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-5 col-md-5 col-sm-10 col-12">
+                                        <div class="row">
+                                            <form action="{{ route('admin.search.employers') }}" method="GET" role="search" class="d-flex">
+                                                @csrf
+                                                <div class="input-group">
+                                                    <input class="form-control me-2 border border-warning" type="search" name="search" placeholder="Please try again to search by Name, Email and Company Name" aria-label="Search">
+                                                    <div class="input-group-text bg-warning">
+                                                        <button class="btn " type="submit">
+                                                            <i class="fa-solid fa-magnifying-glass text-white"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @else
                     <table class="table text-center">
                         <thead class="table-light">
                             <tr>
@@ -70,8 +103,22 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @endif
                 </div>
             </div>
+            @else
+            <div class="col-lg-12 mb-3 ">
+                <div class="mb-3 py-4">
+                    <div class="text-center display-1">
+                        <i class="fa-solid fa-users-slash display-1"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fs-3 text-center">
+                            {{ __('No Users yet.') }}</h5>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>

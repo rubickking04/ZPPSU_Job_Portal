@@ -26,6 +26,20 @@ class UserController extends Controller
     }
 
     /**
+     * Search the specified resource.
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $user = User::where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%')->paginate(10);
+        if (count($user) > 0) {
+            return view('admin.user', compact('user'))->with('success', 'Search result for "' . $search . '"');
+        } else {
+            return redirect()->route('admin.users')->with('message', 'We couldn\'t find "' . $search . '" on this page.');
+        }
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $id)

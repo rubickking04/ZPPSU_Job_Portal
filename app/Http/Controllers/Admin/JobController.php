@@ -18,6 +18,20 @@ class JobController extends Controller
     }
 
     /**
+     * Search the specified resource.
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $jobs = Job::where('job_title', 'LIKE', '%' . $search . '%')->orWhere('job_type', 'LIKE', '%' . $search . '%')->orWhere('job_status', 'LIKE', '%' . $search . '%')->orWhere('job_salary', 'LIKE', '%' . $search . '%')->paginate(10);
+        if (count($jobs) > 0) {
+            return view('admin.job', compact('jobs'))->with('success', 'Search result for "' . $search . '"');
+        } else {
+            return redirect()->route('admin.jobs')->with('message', 'We couldn\'t find "' . $search . '" on this page.');
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

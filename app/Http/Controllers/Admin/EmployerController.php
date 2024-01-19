@@ -26,6 +26,20 @@ class EmployerController extends Controller
     }
 
     /**
+     * Search the specified resource.
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $employer = Employer::where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%')->orWhere('company_name', 'LIKE', '%' . $search . '%')->paginate(10);
+        if (count($employer) > 0) {
+            return view('admin.employer', compact('employer'))->with('success', 'Search result for "' . $search . '"');
+        } else {
+            return redirect()->route('admin.employers')->with('message', 'We couldn\'t find "' . $search . '" on this page.');
+        }
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $id)

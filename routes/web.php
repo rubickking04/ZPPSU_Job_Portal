@@ -173,15 +173,19 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         });
         Route::controller(AdminUserController::class)->group(function() {
             Route::get('/admin/user', 'index')->name('admin.users');
+            Route::get('/admin/user/search', 'search')->name('admin.search.users');
         });
         Route::controller(AdminJobController::class)->group(function() {
             Route::get('/admin/job', 'index')->name('admin.jobs');
+            Route::get('/admin/job/search', 'search')->name('admin.search.jobs');
         });
         Route::controller(AdminEmployerController::class)->group(function() {
             Route::get('/admin/employer', 'index')->name('admin.employers');
+            Route::get('/admin/employer/search', 'search')->name('admin.search.employers');
         });
         Route::controller(AdminApplicantController::class)->group(function() {
             Route::get('/admin/applicant', 'index')->name('admin.applicants');
+            Route::get('/admin/applicant/search', 'search')->name('admin.search.applicants');
         });
         Route::controller(AuthAdminLogout::class)->group(function() {
             Route::post('/admin/logout', 'logout')->name('admin.logout');
