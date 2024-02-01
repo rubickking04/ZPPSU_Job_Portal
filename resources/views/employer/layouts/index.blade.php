@@ -44,11 +44,40 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+        .list-links {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            padding: 0 10px;
+            display: inline-block;
+            position: relative;
+            color: #0087ca;
+        }
+        .list-links:hover{
+            color: white;
+            /* text-decoration: underline; */
+        }
+        .list-links::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 4px;
+            bottom: 0;
+            left: 0;
+            border-radius: 20px;
+            background-color: #B71C1C;
+            transform-origin: bottom center;
+            transition: transform 0.25s ease-out;
+        }
+        .list-links:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom center;
+        }
     </style>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased" style="background-color: #eceff1">
+<body class="antialiased" style="background-color: #FAFAFA">
     @include('sweetalert::alert')
     <div id="app">
         <nav class="navbar navbar-expand-lg shadow-sm" >
@@ -60,20 +89,27 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link list-link active" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
+                        <a class="nav-link list-link active fs-5" aria-current="page" href="{{ route('user.home') }}">{{ __('Find Jobs') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link list-link active" href="#">{{ __('My Jobs') }}</a>
+                        <a class="nav-link list-link active fs-5" href="#">{{ __('My Jobs') }}</a>
                     </li>
+                </ul>
+                <ul class="mx-auto navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link list-link active" href="#">Pricing</a>
+                        <a class="nav-link list-link active fs-5 text-white" href="#"></a>
+                    </li>
+                </ul>
+                <ul class="mx-auto navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link list-links active  fs-2" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                     <div class="hstack gap-3">
                         {{-- @guest --}}
                         <li class="nav-item">
-                            <a class="nav-link list-link active" href="{{ route('user.login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link list-link active fs-5" href="{{ route('user.login') }}">{{ __('Login') }}</a>
                         </li>
                         {{-- @endguest --}}
                         {{-- @auth
@@ -91,7 +127,7 @@
                         @endauth --}}
                         <div class="vr mt-2" style="height: 25px;"></div>
                         <li class="nav-item">
-                            <a class="nav-link list-link active" href="{{ route('employer.login') }}">{{ __('Employer / Post Jobs') }}</a>
+                            <a class="nav-link list-link active fs-5" href="{{ route('employer.login') }}">{{ __('Employer / Post Jobs') }}</a>
                         </li>
                     </div>
                 </ul>

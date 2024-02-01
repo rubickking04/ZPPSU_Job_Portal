@@ -40,7 +40,7 @@
                     <span class="input-group-text">What</span>
                         <input class="form-control me-2" name="search" type="search" placeholder="Job title, Company, or City" aria-label="Search">
                     </div>
-                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 @foreach ( $post_jobs as $post_job)
                 <a href="{{ route('user.job',$post_job->id) }}" class="card text-decoration-none mb-3 shadow rounded-5">
