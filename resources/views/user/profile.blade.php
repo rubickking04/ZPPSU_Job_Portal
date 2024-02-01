@@ -107,7 +107,7 @@
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="mb-3">
-                                    <input type="file" class="form-control filepond" id="file_resume" name="file_resume"/>
+                                    <input type="file" class="form-control filepond" id="file_resume" name="file_resume" accepted-file-types="application/pdf"/>
                                 </div>
                                 <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">{{ __('Upload Resume') }}</button>
                             </form>

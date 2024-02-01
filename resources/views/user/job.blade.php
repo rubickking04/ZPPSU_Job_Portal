@@ -46,12 +46,16 @@
                     <p class="mt-4">{{ $description }}</p>
                 </div>
                 <div class="card-footer">
-                    <form action="{{ route('job.apply') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="employer_id" value="{{ $emp_id }}">
-                        <input type="hidden" name="job_id" value="{{ $job_id }}">
-                        <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
-                    </form>
+                    @if (Auth::user()->file_resume)
+                        <form action="{{ route('job.apply') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="employer_id" value="{{ $emp_id }}">
+                            <input type="hidden" name="job_id" value="{{ $job_id }}">
+                            <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                        </form>
+                    @else
+                        <button onClick="alert('No resume found')" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                    @endif
                 </div>
             </div>
         </div>

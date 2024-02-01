@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></button>
+                                            <a href="{{ route('post.job.destroy', $job->id) }}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure to remove this job? All the data will be removed and applicants.')"><i class="fa-solid fa-trash-can"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -231,11 +231,11 @@
                 <div class="col-lg-12 mb-3 ">
                     <div class="mb-3 py-4">
                         <div class="text-center display-1">
-                            <i class="fa-solid fa-users-slash display-1"></i>
+                            <i class="fa-solid fa-user-slash display-1"></i>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title fs-3 text-center">
-                                {{ __('No Users yet.') }}</h5>
+                                {{ __('No Jobs yet.') }}</h5>
                         </div>
                     </div>
                 </div>
