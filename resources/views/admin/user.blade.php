@@ -14,7 +14,7 @@
                     <div class="text-start py-3 fs-4 fw-bold card-title">{{ __('Users Table') }}
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
+                {{-- <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
                     <form action="{{ route('admin.search.users') }}" method="GET" role="search" class="d-flex">
                         @csrf
                         <input class="form-control me-2 " type="search" name="search" placeholder="Search name or Email" aria-label="Search">
@@ -22,7 +22,7 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                </div>
+                </div> --}}
             </div>
             @if($user->count())
             <div class="card mt-3 shadow rounded-5">

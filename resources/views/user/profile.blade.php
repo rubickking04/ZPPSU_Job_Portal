@@ -28,15 +28,27 @@
                             <div class="col-4 col-xl-4 col-lg-4">
                                 <p class="fs-6"><i class="fa-solid fa-phone fs-6"></i><span class="px-2">{{ __('Phone Number') }}</span></p>
                             </div>
-                            <div class="col-8 col-xl-8 col-lg-8">
-                                <p class="fs-6 text-end fw-bolder">{{ __('09557815639') }}</p>
-                            </div>
+                            @if (Auth::user()->number)
+                                <div class="col-8 col-xl-8 col-lg-8">
+                                    <p class="fs-6 text-end fw-bolder">{{ Auth::user()->number }}</p>
+                                </div>
+                            @else
+                                <div class="col-8 col-xl-8 col-lg-8">
+                                    <p class="fs-6 text-end fw-bolder">{{ __('N/A') }}</p>
+                                </div>
+                            @endif
                             <div class="col-4 col-xl-4 col-lg-4">
                                 <p class="fs-6"><i class="fa-solid fa-location-dot fs-6"></i><span class="px-2">{{ __('Address') }}</span></p>
                             </div>
-                            <div class="col-8 col-xl-8 col-lg-8">
-                                <p class="fs-6 text-end fw-bolder">{{ __('Zamboanga City') }}</p>
-                            </div>
+                            @if (Auth::user()->address)
+                                <div class="col-8 col-xl-8 col-lg-8">
+                                    <p class="fs-6 text-end fw-bolder">{{ Auth::user()->address }}</p>
+                                </div>
+                            @else
+                                <div class="col-8 col-xl-8 col-lg-8">
+                                    <p class="fs-6 text-end fw-bolder">{{ __('N/A') }}</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

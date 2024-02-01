@@ -102,7 +102,7 @@
                 </ul>
                 <ul class="mx-auto navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link list-links active  fs-2" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+                        <a class="nav-link list-links active fs-2" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">

@@ -8,7 +8,7 @@
                     <div class="text-start py-3 fs-4 fw-bold card-title">{{ __('Applicants Table') }}
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
+                {{-- <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
                     <form action="#" method="GET" role="search" class="d-flex">
                         @csrf
                         <input class="form-control me-2 " type="search" name="search" placeholder="Search Job role" aria-label="Search">
@@ -16,7 +16,7 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                </div>
+                </div> --}}
             </div>
             <div class="card mt-3 shadow rounded-5">
                 <div class="card-body">
@@ -77,13 +77,13 @@
                                                                     <p class="fs-6"><i class="fa-solid fa-phone fs-6"></i><span class="px-2">{{ __('Phone Number') }}</span></p>
                                                                 </div>
                                                                 <div class="col-8 col-xl-8 col-lg-8">
-                                                                    <p class="fs-6 text-end fw-bolder">{{ __('09557815639') }}</p>
+                                                                    <p class="fs-6 text-end fw-bolder">{{ $applicants->user->phone_number }}</p>
                                                                 </div>
                                                                 <div class="col-4 col-xl-4 col-lg-4">
                                                                     <p class="fs-6"><i class="fa-solid fa-location-dot fs-6"></i><span class="px-2">{{ __('Address') }}</span></p>
                                                                 </div>
                                                                 <div class="col-8 col-xl-8 col-lg-8">
-                                                                    <p class="fs-6 text-end fw-bolder">{{ __('Zamboanga City') }}</p>
+                                                                    <p class="fs-6 text-end fw-bolder">{{ $applicants->user->address }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -14,7 +14,7 @@
                     <div class="text-start py-3 fs-4 fw-bold card-title">{{ __('Posted Jobs') }}
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
+                {{-- <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
                     <form action="{{ route('admin.search.jobs') }}" method="GET" role="search" class="d-flex">
                         @csrf
                         <input class="form-control me-2 " type="search" name="search" placeholder="Search Job role" aria-label="Search">
@@ -22,7 +22,7 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                </div>
+                </div> --}}
             </div>
             @if($jobs->count())
             <div class="card mt-3 shadow rounded-5">
