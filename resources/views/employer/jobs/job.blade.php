@@ -115,7 +115,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateModalCenter{{ $job->id }}"><i class="fa-solid fa-pen"></i></button>
+                                            <button class=
+                                            btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateModalCenter{{ $job->id }}"><i class="fa-solid fa-pen"></i></button>
                                             <div class="modal fade modal-alert" id="updateModalCenter{{ $job->id }}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog ">
                                                     <div class="modal-content shadow" style="border-radius:20px; ">
