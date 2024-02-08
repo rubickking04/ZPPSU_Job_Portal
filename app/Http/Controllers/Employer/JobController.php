@@ -72,7 +72,6 @@ class JobController extends Controller
             'job_salary' => 'required|string|max:50',
             'job_status' => 'required|string|max:50',
             'job_description' => 'required|string|max:1000',
-            'job_start_date' => 'required|string|max:50',
             'job_end_date' => 'required|string|max:50',
         ]);
         $jobs = Job::find($id);
@@ -82,7 +81,6 @@ class JobController extends Controller
         $jobs->job_salary = $request->input('job_salary');
         $jobs->job_status = $request->input('job_status');
         $jobs->job_description = $request->input('job_description');
-        $jobs->job_start_date = $request->input('job_start_date');
         $jobs->job_end_date = $request->input('job_end_date');
         $jobs->save();
         return back()->with('success', 'Updated successfully.');

@@ -30,7 +30,6 @@ class PostJobController extends Controller
             'job_salary' => 'required|string|max:50',
             'job_status' => 'required|string|max:50',
             'job_description' => 'required|string|max:1000',
-            'job_start_date' => 'required|string|max:50',
             'job_end_date' => 'required|string|max:50',
         ]);
         $post_job = Job::create([
@@ -41,7 +40,6 @@ class PostJobController extends Controller
             'job_salary' => $request->job_salary,
             'job_status' => $request->job_status,
             'job_description' => $request->job_description,
-            'job_start_date' => $request->job_start_date,
             'job_end_date' => $request->job_end_date,
         ]);
         // dd($post_job);

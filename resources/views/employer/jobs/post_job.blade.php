@@ -63,15 +63,6 @@
                                 @enderror
                             </div>
                             <div class="form-outline text-start mb-2 col-lg-6">
-                                <label for="job_start_date" class="col-form-label fs-4">{{ __('Job Start Date') }}</label>
-                                <input type="date" id="job_start_date" placeholder="Zamboanga City" name="job_start_date" class="form-control @error('job_start_date') is-invalid @enderror"  value="{{ old('job_start_date') }}"/>
-                                @error('job_start_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-outline text-start mb-2 col-lg-6">
                                 <label for="job_end_date" class="col-form-label fs-4">{{ __('Job End Date') }}</label>
                                 <input type="date" id="job_end_date" placeholder="Zamboanga City" name="job_end_date" class="form-control @error('job_end_date') is-invalid @enderror"  value="{{ old('job_end_date') }}"/>
                                 @error('job_end_date')
