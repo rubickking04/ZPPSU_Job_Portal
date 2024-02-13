@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('job_type');
             $table->string('job_status');
             $table->string('job_salary');
+            $table->string('job_vacancy');
             $table->date('job_end_date');
             $table->timestamps();
         });
