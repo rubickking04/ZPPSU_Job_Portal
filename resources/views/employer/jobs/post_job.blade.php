@@ -71,9 +71,18 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div class="form-outline text-start mb-2 col-lg-6">
+                                <label for="job_vacancy" class="col-form-label fs-4">{{ __('Job Vacancy') }}</label>
+                                <input type="number" id="job_vacancy" placeholder="2" name="job_vacancy" class="form-control @error('job_vacancy') is-invalid @enderror"  value="{{ old('job_vacancy') }}"/>
+                                @error('job_vacancy')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="form-outline text-start mb-2">
                                 <label for="job_description" class="col-form-label fs-4">{{ __('Job Description') }}</label>
-                                <textarea type="text" id="job_description" placeholder="Write job description here" rows="7" name="job_description" class="form-control  @error('job_description') is-invalid @enderror"  value="{{ old('job_description') }}"></textarea>
+                                <textarea type="text" id="editor" placeholder="Write job description here" rows="7" name="job_description" class="form-control  @error('job_description') is-invalid @enderror"  value="{{ old('job_description') }}"></textarea>
                                 @error('job_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

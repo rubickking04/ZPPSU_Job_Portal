@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('employers')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('job_title');
-            $table->string('job_description');
+            $table->text('job_description');
             $table->string('job_location');
             $table->string('job_type');
             $table->string('job_status');
             $table->string('job_salary');
-            $table->string('job_vacancy');
+            $table->string('job_vacancy')->default('1');
             $table->date('job_end_date');
             $table->timestamps();
         });

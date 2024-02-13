@@ -14,6 +14,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+        selector: 'textarea#editor', // Replace this CSS selector to match the placeholder element for TinyMCE
+        plugins: 'code table lists',
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+    });
+</script>
     <style>
         .list-link {
             font-family: 'Montserrat', sans-serif;
@@ -79,7 +87,7 @@
 
 <body class="antialiased" style="background-color: #FAFAFA">
     @include('sweetalert::alert')
-    <div id="app">
+    <div id="app froala">
         <nav class="navbar navbar-expand-lg shadow-sm" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"><img class="align-top" src="{{ asset('/storage/images/logo.png') }}" height="40" width="40"></a>
@@ -139,38 +147,5 @@
         </main>
     </div>
 </body>
-<script>
-    function password_show_hide() {
-        var x = document.getElementById("password");
-        var show_eye = document.getElementById("show_eye");
-        var hide_eye = document.getElementById("hide_eye");
-        hide_eye.classList.remove("d-none");
-        if (x.type === "password") {
-            x.type = "text";
-            show_eye.style.display = "none";
-            hide_eye.style.display = "block";
-        } else {
-            x.type = "password";
-            show_eye.style.display = "block";
-            hide_eye.style.display = "none";
-        }
-    }
-
-    function password_show_hides() {
-        var x = document.getElementById("password-confirm");
-        var show_eye = document.getElementById("show_eyes");
-        var hide_eye = document.getElementById("hide_eyes");
-        hide_eye.classList.remove("d-none");
-        if (x.type === "password") {
-            x.type = "text";
-            show_eye.style.display = "none";
-            hide_eye.style.display = "block";
-        } else {
-            x.type = "password";
-            show_eye.style.display = "block";
-            hide_eye.style.display = "none";
-        }
-    }
-</script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </html>

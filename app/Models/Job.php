@@ -22,6 +22,7 @@ class Job extends Model
         'job_type',
         'job_status',
         'job_salary',
+        'job_vacancy',
         'job_end_date',
     ];
 

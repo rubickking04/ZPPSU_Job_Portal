@@ -46,16 +46,56 @@
                     <p class="mt-4">{{ $description }}</p>
                 </div>
                 <div class="card-footer">
-                    @if (Auth::user()->file_resume)
-                        <form action="{{ route('job.apply') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="employer_id" value="{{ $emp_id }}">
-                            <input type="hidden" name="job_id" value="{{ $job_id }}">
-                            <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
-                        </form>
+                    @guest
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content shadow" style="border-radius:20px;">
+                                    <div class="modal-header flex-nowrap border-bottom-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body p-4 text-center">
+                                        <div class="text-center display-1">
+                                            <i class="text-danger bi bi-exclamation-triangle display-1"></i>
+                                        </div>
+                                        <h4 class=" mb-0">{{ __('Please Login First to apply for this job') }}</h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @else
-                        <button onClick="alert('No resume found')" class="btn btn-primary">{{ __('Apply Now') }}</button>
-                    @endif
+                        @if (Auth::user()->file_resume)
+                            <form action="{{ route('job.apply') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="employer_id" value="{{ $emp_id }}">
+                                <input type="hidden" name="job_id" value="{{ $job_id }}">
+                                <button type="submit" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                            </form>
+                        @else
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenters" class="btn btn-primary">{{ __('Apply Now') }}</button>
+                            <div class="modal fade" id="exampleModalCenters" tabindex="-1" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content shadow" style="border-radius:20px;">
+                                        <div class="modal-header flex-nowrap border-bottom-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body p-4 text-center">
+                                            <div class="text-center display-1">
+                                                <i class="text-danger bi bi-exclamation-triangle display-1"></i>
+                                            </div>
+                                            <h2 class="fw-bold mb-0">{{ __('No Resume Uploaded Yet.') }}</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                @endguest
                 </div>
             </div>
         </div>
