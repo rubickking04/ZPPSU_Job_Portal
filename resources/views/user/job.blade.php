@@ -41,6 +41,11 @@
                     </div>
                     <button class="btn btn-secondary btn-sm ms-4">{{ $type }}</button>
                     <button class="btn btn-secondary btn-sm ms-2">{{ $status }}</button>
+                    <div class="card-title mt-4">
+                        <i class="fa-solid fa-briefcase me-2 text-muted fs-5"></i>
+                        <span class="">{{ __('Job Vacancy') }}</span>
+                    </div>
+                    <button class="btn btn-secondary btn-sm ms-4">{{ $vacancy }}</button>
                     <hr>
                     <h5>{{ __('Full Job Description') }}</h5>
                     <p class="mt-4">{{ $description }}</p>
