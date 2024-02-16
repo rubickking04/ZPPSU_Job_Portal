@@ -155,16 +155,9 @@
                                                 @else
                                                 <p class="mb-5">No resume</p>
                                                 @endif
-                                                @if ($applicants->deleted_at)
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Approved</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                                                 </div>
-                                                @else
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <a href="{{ route('approve.job',$applicants->id) }}" type="button" class="btn btn-primary">Approve</a>
-                                                </div>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>

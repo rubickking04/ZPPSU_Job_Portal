@@ -8,7 +8,7 @@
                         <div class="text-start py-3 fs-4 fw-bold card-title">{{ __('Posted Jobs') }}
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-12 py-3">
                         <form action="{{ route('employer.job.search') }}" method="GET" role="search" class="d-flex">
                             @csrf
                             <input class="form-control me-2 " type="search" name="search" placeholder="Search Job role" aria-label="Search">
@@ -16,7 +16,7 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </form>
-                    </div> --}}
+                    </div>
                 </div>
                 @if($jobs->count())
                 <div class="card mt-3 shadow rounded-5">
@@ -39,8 +39,8 @@
                                                 <form action="{{ route('employer.job.search') }}" method="GET" role="search" class="d-flex">
                                                     @csrf
                                                     <div class="input-group">
-                                                        <input class="form-control me-2 border border-warning" type="search" name="search" placeholder="Please try again to search by Name and Email" aria-label="Search">
-                                                        <div class="input-group-text bg-warning">
+                                                        <input class="form-control me-2 border border-primary" type="search" name="search" placeholder="Please try again to search by Name and Email" aria-label="Search">
+                                                        <div class="input-group-text bg-primary">
                                                             <button class="btn " type="submit">
                                                                 <i class="fa-solid fa-magnifying-glass text-white"></i>
                                                             </button>
@@ -115,8 +115,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class=
-                                            btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateModalCenter{{ $job->id }}"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateModalCenter{{ $job->id }}"><i class="fa-solid fa-pen"></i></button>
                                             <div class="modal fade modal-alert" id="updateModalCenter{{ $job->id }}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog ">
                                                     <div class="modal-content shadow" style="border-radius:20px; ">
@@ -183,18 +182,18 @@
                                                                         @enderror
                                                                     </div>
                                                                     <div class="form-outline text-start mb-2 col-lg-6">
-                                                                        <label for="job_start_date" class="col-form-label fs-4">{{ __('Job Start Date') }}</label>
-                                                                        <input type="date" id="job_start_date" placeholder="Zamboanga City" name="job_start_date" class="form-control @error('job_start_date') is-invalid @enderror"  value="{{ $job->job_start_date }}"/>
-                                                                        @error('job_start_date')
+                                                                        <label for="job_end_date" class="col-form-label fs-4">{{ __('Job End Date') }}</label>
+                                                                        <input type="date" id="job_end_date" placeholder="Zamboanga City" name="job_end_date" class="form-control @error('job_end_date') is-invalid @enderror"  value="{{ $job->job_end_date }}"/>
+                                                                        @error('job_end_date')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
                                                                         @enderror
                                                                     </div>
                                                                     <div class="form-outline text-start mb-2 col-lg-6">
-                                                                        <label for="job_end_date" class="col-form-label fs-4">{{ __('Job End Date') }}</label>
-                                                                        <input type="date" id="job_end_date" placeholder="Zamboanga City" name="job_end_date" class="form-control @error('job_end_date') is-invalid @enderror"  value="{{ $job->job_end_date }}"/>
-                                                                        @error('job_end_date')
+                                                                        <label for="job_vacancy" class="col-form-label fs-4">{{ __('Job Vacancy') }}</label>
+                                                                        <input type="number" id="job_vacancy" placeholder="2" name="job_vacancy" class="form-control @error('job_vacancy') is-invalid @enderror"  value="{{ $job->job_vacancy }}"/>
+                                                                        @error('job_vacancy')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
@@ -225,6 +224,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $jobs->links() }}
                         @endif
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with('applicants')->where('user_id', Auth::user()->id)->get();
+        $jobs = Job::with('applicants')->where('user_id', Auth::user()->id)->latest()->paginate(10);
         // dd($jobs);
         return view('employer.jobs.job', compact('jobs'));
     }
