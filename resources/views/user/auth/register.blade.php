@@ -2,12 +2,12 @@
 @section('content')
     <div class="container py-2">
         <div class="row justify-content-center py-2">
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card shadow" >
                     <div class="card-body py-5">
                         <div class="text-center">
                             <img src="{{ asset('/storage/images/avatar.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
-                            <h2 >{{ __('Employee Job Portal - ZPPSU') }}</h2>
+                            <h2 >{{ __('Job Seeker Portal') }}</h2>
                         </div>
                         <form method="POST" action="{{ route('user.auth.register') }}">
                             @csrf
@@ -38,7 +38,20 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-outline text-start">
+                                <div class="form-outline text-start col-lg-6">
+                                    <label for="email" class="col-form-label">ID Number or TOR</label>
+                                    <div class="input-group">
+                                        {{-- <div class="input-group-text"><i class="fa-solid fa-phone"></i></div> --}}
+                                        <input type="number" id="phone_number" placeholder="Example: 2019000000"
+                                            name="phone_number" class="form-control @error('phone_number') is-invalid @enderror"  value="{{ old('phone_number') }}"/>
+                                        @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-outline text-start col-lg-6">
                                     <label for="email" class="col-form-label">Phone Number</label>
                                     <div class="input-group">
                                         <div class="input-group-text"><i class="fa-solid fa-phone"></i></div>
@@ -64,7 +77,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-outline text-start ">
+                                <div class="form-outline text-start col-lg-6">
                                     <label for="password" class="col-form-label">{{ __('Password') }}</label>
                                     <div class="input-group">
                                         <span class="input-group-text" onclick="password_show_hide();">
@@ -80,7 +93,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-outline text-start ">
+                                <div class="form-outline text-start col-lg-6">
                                     <label for="confirm-password" class="col-form-label">{{ __('Confirm Password') }}</label>
                                     <div class="input-group">
                                         <span class="input-group-text" onclick="password_show_hides();">

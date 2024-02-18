@@ -9,28 +9,29 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Employer\PostJobController;
 use App\Http\Controllers\Employer\RequestController;
 use App\Http\Controllers\User\Resume\WorkController;
+use App\Http\Controllers\Employer\ScheduleController;
 use App\Http\Controllers\User\Resume\SkillController;
 use App\Http\Controllers\User\Resume\ResumeController;
 use App\Http\Controllers\Employer\JobDetailsController;
 use App\Http\Controllers\User\Resume\EducationController;
-use App\Http\Controllers\User\ApplicationController as ApplicantController;
 
 use App\Http\Controllers\User\JobController as UserJobController;
+use App\Http\Controllers\Admin\JobController as AdminJobController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
 use App\Http\Controllers\User\Auth\LoginController as AuthUserLogin;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-use App\Http\Controllers\Admin\EmployerController as AdminEmployerController;
-use App\Http\Controllers\Admin\JobController as AdminJobController;
-use App\Http\Controllers\Admin\ApplicantController as AdminApplicantController;
 use App\Http\Controllers\Admin\Auth\LoginController as AuthAdminLogin;
 use App\Http\Controllers\User\Auth\LogoutController as AuthUserLogout;
 use App\Http\Controllers\Admin\Auth\LogoutController as AuthAdminLogout;
 use App\Http\Controllers\User\Auth\RegisterController as AuthUserRegister;
 use App\Http\Controllers\Employer\HomeController as EmployerHomeController;
+use App\Http\Controllers\User\ApplicationController as ApplicantController;
 use App\Http\Controllers\Employer\Auth\LoginController as AuthEmployerLogin;
 use App\Http\Controllers\User\Review\WorkController as ReviewWorkController;
+use App\Http\Controllers\Admin\EmployerController as AdminEmployerController;
 use App\Http\Controllers\Employer\Auth\LogoutController as AuthEmployerLogout;
+use App\Http\Controllers\Admin\ApplicantController as AdminApplicantController;
 use App\Http\Controllers\User\Review\ResumeController as ReviewResumeController;
 use App\Http\Controllers\Employer\Auth\RegisterController as AuthEmployerRegister;
 use App\Http\Controllers\User\Review\EducationController as ReviewEducationController;
@@ -146,6 +147,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::controller(JobDetailsController::class)->group( function() {
             Route::get('/employer/job/details/{id}', 'index')->name('employer.job.details');
             Route::get('/employer/job/approve/{id}','soft_destroy')->name('approve.job');
+        });
+        Route::controller(ScheduleController::class)->group( function() {
+            Route::post('/employer/schedule', 'store')->name('employer.job.schedule');
         });
         Route::controller(PostJobController::class)->group( function() {
             Route::get('/employer/post/jobs', 'index')->name('employer.posts.jobs');

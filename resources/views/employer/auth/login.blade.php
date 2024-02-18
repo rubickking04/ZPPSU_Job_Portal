@@ -8,7 +8,7 @@
                         <div class="card-body py-5">
                             <div class="text-center">
                                 <img src="{{ asset('/storage/images/logo.png') }}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
-                                <h2 >{{ __('Employer Portal - ZPPSU') }}</h2>
+                                <h2 >{{ __('Employer Portal') }}</h2>
                             </div>
                             <form method="POST" action="{{ route('employer.auth.login') }}">
                                 @csrf

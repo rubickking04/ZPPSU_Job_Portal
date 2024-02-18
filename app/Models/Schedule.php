@@ -17,7 +17,6 @@ class Schedule extends Model
     protected $fillable = [
         'user_id',
         'employer_id',
-        'time',
-        'date'
+        'date_time',
     ];
 }

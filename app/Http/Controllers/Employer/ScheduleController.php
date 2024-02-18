@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Employer;
 
-use App\Http\Controllers\Controller;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ScheduleController extends Controller
 {
@@ -20,7 +23,17 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date_time' => 'required'
+        ]);
+        $schedule = Schedule::create([
+            'employer_id' => Auth::user()->id,
+            'user_id' => $request->input('user_id'),
+            'date_time'=> $request->input('date_time'),
+        ]);
+        // dd($schedule);
+        Alert::toast('Scheduled successfully', 'success');
+        return back()->with('msg', 'Scheduled successfully');
     }
 
     /**

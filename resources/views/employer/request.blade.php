@@ -132,7 +132,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenters{{ $applicants->id }}"><i class="fa-solid fa-eye"></i></button>
                                 </td>
                             </tr>
                             @endforeach

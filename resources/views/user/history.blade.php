@@ -78,7 +78,10 @@
                                 @endif
                                 <td class="text-center">{{ $applicants->created_at->toDayDateTimeString() }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('job.apply.destroy', $applicants->id) }}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                                    @if ($applicants->deleted_at)
+                                    @else
+                                    <a href="{{ route('job.apply.destroy', $applicants->id) }}" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to withdraw your application?')"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                                    @endif
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{ $applicants->id }}"><i class="fa-solid fa-eye"></i></button>
                                     <div class="modal fade" id="exampleModalCenter{{ $applicants->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

@@ -47,7 +47,11 @@ class JobDetailsController extends Controller
      */
     public function soft_destroy(string $id)
     {
-        $applicant = Applicant::find($id)->delete();
-        return back()->with('success', 'Approved successfully.');
+        $applicant = Applicant::find($id);
+        if ($applicant){
+            $applicant->jobs->decrement('job_vacancy');
+            $applicant->delete();
+            return back()->with('success', 'Approved successfully.');
+        }
     }
 }
