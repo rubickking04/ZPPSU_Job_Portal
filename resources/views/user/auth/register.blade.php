@@ -42,9 +42,8 @@
                                     <label for="email" class="col-form-label">ID Number or TOR</label>
                                     <div class="input-group">
                                         {{-- <div class="input-group-text"><i class="fa-solid fa-phone"></i></div> --}}
-                                        <input type="number" id="phone_number" placeholder="Example: 2019000000"
-                                            name="phone_number" class="form-control @error('phone_number') is-invalid @enderror"  value="{{ old('phone_number') }}"/>
-                                        @error('phone_number')
+                                        <input type="number" id="id_number" placeholder="Example: 2019000000" name="id_number" class="form-control @error('id_number') is-invalid @enderror"  value="{{ old('id_number') }}"/>
+                                        @error('id_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
