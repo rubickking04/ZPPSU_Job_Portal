@@ -2,12 +2,13 @@
 
 namespace App\Mail\Employer;
 
+use App\Models\Applicant;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ApproveMail extends Mailable
 {
@@ -16,9 +17,9 @@ class ApproveMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public Applicant $applicant)
     {
-        //
+        $this->applicant = $applicant;
     }
 
     /**
@@ -27,7 +28,7 @@ class ApproveMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Approve Mail',
+            subject: 'Approved Mail',
         );
     }
 
@@ -37,7 +38,7 @@ class ApproveMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.employer.approved_mail',
         );
     }
 

@@ -26,7 +26,7 @@
                                 <td>Job Role</td>
                                 <td>Applicants Name</td>
                                 <td>Application Status</td>
-                                {{-- <td>Resume</td> --}}
+                                <td>Scheduled Interview</td>
                                 <td>Date Applied</td>
                                 <td>Actions</td>
                             </tr>
@@ -40,6 +40,11 @@
                                     <td class="text-success text-center">{{ __('Approved') }}</td>
                                 @else
                                     <td class="text-warning text-center">{{ __('Pending') }}</td>
+                                @endif
+                                @if ($applicants->user->sched)
+                                    <td class="text-success text-center">{{ $applicants->user->sched->date_time }}</td>
+                                @else
+                                    <td class="text-danger text-center">{{ __('N/A') }}</td>
                                 @endif
                                 <td class="text-center">{{ $applicants->created_at->toDayDateTimeString() }}</td>
                                 <td class="text-center">
@@ -133,6 +138,7 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-warning btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModalCenters{{ $applicants->id }}"><i class="fa-solid fa-calendar"></i></button>
+                                    @if($applicants->user->sched)
                                     <div class="modal fade" id="exampleModalCenters{{ $applicants->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -141,18 +147,30 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-start">
-                                                    {{-- <div class="row">
-                                                        <div class="col-lg-8">
-                                                            <div class="text-start mt-4">
-                                                                <h2 >{{$applicants->user->name }}</h2>
-                                                            </div>
+                                                    <form action="{{ route('employer.job.schedule') }}" method="POST">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <input type="hidden" name="user_id" value={{ $applicants->user->id }}>
+                                                            <label for="recipient-name" class="col-form-label"> Date and Time</label>
+                                                            <input type="text" name="date_time" class="form-control" id="recipient-name" value="{{ $applicants->user->sched->date_time }}" readonly>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="text-end">
-                                                                <img src="{{asset('/storage/images/avatar.png')}}" alt="avatar" class="rounded-circle img-thumbnail  mb-3" height="100px" width="100px">
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @else
+                                    <div class="modal fade" id="exampleModalCenters{{ $applicants->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Send Schedule to '. $applicants->user->name) }}</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
                                                     <form action="{{ route('employer.job.schedule') }}" method="POST">
                                                         @csrf
                                                         <div class="mb-3">
@@ -160,7 +178,6 @@
                                                             <label for="recipient-name" class="col-form-label"> Date and Time</label>
                                                             <input type="datetime-local" name="date_time" class="form-control" id="recipient-name">
                                                         </div>
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -170,6 +187,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+
                                 </td>
                             </tr>
                             @endforeach

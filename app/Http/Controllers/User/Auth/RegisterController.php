@@ -4,9 +4,11 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\Employee\WelcomeMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
@@ -45,6 +47,7 @@ class RegisterController extends Controller
             'address' => $request->input('address'),
             'password' => Hash::make($request->input('password')),
         ]);
+        $mail = Mail::to($user['email'])->send(new WelcomeMail($user));
         Auth::login($user);
         // Alert::toast('Welcome, ' . Auth::user()->name, 'success');
         return redirect()->route('user.home');

@@ -2,6 +2,7 @@
 
 namespace App\Mail\Employer;
 
+use App\Models\Employer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,9 @@ class WelcomeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public Employer $employer)
     {
-        //
+        $this->employer = $employer;
     }
 
     /**
@@ -27,7 +28,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome Mail',
+            subject: 'Welcome to ZPPSU - Job Portal System',
         );
     }
 
@@ -37,7 +38,7 @@ class WelcomeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.employer.welcome',
         );
     }
 

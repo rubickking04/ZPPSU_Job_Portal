@@ -28,9 +28,9 @@
                             <div class="col-4 col-xl-4 col-lg-4">
                                 <p class="fs-6"><i class="fa-solid fa-phone fs-6"></i><span class="px-2">{{ __('Phone Number') }}</span></p>
                             </div>
-                            @if (Auth::user()->number)
+                            @if (Auth::user()->phone_number)
                                 <div class="col-8 col-xl-8 col-lg-8">
-                                    <p class="fs-6 text-end fw-bolder">{{ Auth::user()->number }}</p>
+                                    <p class="fs-6 text-end fw-bolder">{{ Auth::user()->phone_number }}</p>
                                 </div>
                             @else
                                 <div class="col-8 col-xl-8 col-lg-8">

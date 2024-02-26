@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Employer;
 use App\Models\Applicant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\Employer\ApproveMail;
+use Illuminate\Support\Facades\Mail;
 
 class JobDetailsController extends Controller
 {
@@ -13,7 +15,7 @@ class JobDetailsController extends Controller
      */
     public function index($id)
     {
-        $applicant = Applicant::with('user.file_resume')->withTrashed()->where('job_id', $id)->paginate(10);
+        $applicant = Applicant::with('user.file_resume','user.sched')->withTrashed()->where('job_id', $id)->paginate(10);
         // dd($applicant);
         return view('employer.jobs.job_details', compact('applicant'));
     }
@@ -50,6 +52,7 @@ class JobDetailsController extends Controller
         $applicant = Applicant::find($id);
         if ($applicant){
             $applicant->jobs->decrement('job_vacancy');
+            $mail = Mail::to($applicant->user->email)->send(new ApproveMail($applicant));
             $applicant->delete();
             return back()->with('success', 'Approved successfully.');
         }

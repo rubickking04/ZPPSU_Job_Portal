@@ -19,4 +19,13 @@ class Schedule extends Model
         'employer_id',
         'date_time',
     ];
+
+    /**
+     *
+     * Define the relationship between Job and Employer model.
+     *
+     */
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

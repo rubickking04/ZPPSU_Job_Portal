@@ -24,7 +24,6 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd("applied successfully");
         $applicant = Applicant::create([
             'user_id'=> Auth::user()->id,
             'employer_id' => $request->input('employer_id'),

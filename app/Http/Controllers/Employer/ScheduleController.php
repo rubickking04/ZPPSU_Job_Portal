@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Employer;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use App\Mail\Employer\ScheduleMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ScheduleController extends Controller
@@ -31,7 +33,7 @@ class ScheduleController extends Controller
             'user_id' => $request->input('user_id'),
             'date_time'=> $request->input('date_time'),
         ]);
-        // dd($schedule);
+        $mail = Mail::to($schedule->user->email)->send(new ScheduleMail($schedule));
         Alert::toast('Scheduled successfully', 'success');
         return back()->with('msg', 'Scheduled successfully');
     }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Employer\Auth;
 
 use App\Models\Employer;
 use Illuminate\Http\Request;
+use App\Mail\Employer\WelcomeMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
@@ -35,13 +37,14 @@ class RegisterController extends Controller
             'email' => 'required|unique:employers|email',
             'password' => 'required|confirmed|min:8',
         ]);
-        $user = Employer::create([
+        $employer = Employer::create([
             'name' => $request->input('name'),
             'company_name' => $request->input('company_name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
-        Auth::guard('employer')->login($user);
+        $mail = Mail::to($employer['email'])->send(new WelcomeMail($employer));
+        Auth::guard('employer')->login($employer);
         Alert::toast('Welcome, ' . Auth::guard('employer')->user()->name, 'success');
         return redirect()->route('employer.home');
     }

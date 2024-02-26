@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Mail\Employee;
+namespace App\Mail\Employer;
 
-use App\Models\User;
+use App\Models\Schedule;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class ScheduleMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public User $user)
+    public function __construct(public Schedule $schedule)
     {
-        $this->user = $user;
+        $this->schedule = $schedule;
     }
 
     /**
@@ -28,7 +28,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to ZPPSU - Job Portal System',
+            subject: 'Schedule Mail',
         );
     }
 
@@ -38,7 +38,7 @@ class WelcomeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.user.welcome',
+            view: 'mail.employer.schedule_mail',
         );
     }
 
